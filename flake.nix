@@ -3,13 +3,17 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/release-24.11";
+    theme = {
+      url = "git+file:themes/ananke";
+      flake = false;
+    };
   };
 
   outputs =
     {
       self,
       nixpkgs,
-      ...
+      theme,
     }:
     let
       systems = [
@@ -41,6 +45,11 @@
           nativeBuildInputs = [
             pkgs.hugo
           ];
+
+          patchPhase = ''
+            mkdir -p themes/
+            cp -r ${theme}/ themes/ananke
+          '';
 
           buildPhase = ''
             hugo ${extraBuildArgs}
