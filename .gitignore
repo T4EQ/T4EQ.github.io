@@ -1,0 +1,7 @@
+**/_gen
+/.hugo_build.lock
+/public/
+
+/nix-portable
+/.direnv
+/result/
