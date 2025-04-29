@@ -18,7 +18,23 @@
     },
     "root": {
       "inputs": {
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "theme": "theme"
+      }
+    },
+    "theme": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1743234794,
+        "narHash": "sha256-gO8spSG2HqK7kpm0R5lnFHFsZQfQYU3Y+wkvBRKwa1Q=",
+        "rev": "a0019812ff62d978781392c765addbaee1c1eddf",
+        "revCount": 516,
+        "type": "git",
+        "url": "file:themes/ananke"
+      },
+      "original": {
+        "type": "git",
+        "url": "file:themes/ananke"
       }
     }
   },
