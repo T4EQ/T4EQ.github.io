@@ -1,0 +1,27 @@
+name: Build static site
+
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: true
+          fetch-depth: 0
+          lfs: true
+      - name: Install Nix
+        uses: cachix/install-nix-action@v17
+      - name: Build site
+        run: nix build
+
+      - name: Archive pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./result
