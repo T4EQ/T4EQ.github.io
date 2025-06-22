@@ -12,6 +12,6 @@ T4EQ is a non-profit community of like-minded individuals committed to tackle so
 
 To envision a world where technology bridges inequality, giving every individual the tools to live with dignity and opportunity.
 
-# Mission
+## Mission
 
 Our mission is to bring equality to the world by shaping the technological landscape to serve minorities and developing nations, leveraging technology for humanity’s advancement.
