@@ -4,7 +4,7 @@ featured_image: ''
 omit_header_text: true
 type: page
 menu: main
-weight: 20
+weight: 30
 
 ---
 
@@ -18,11 +18,11 @@ As part of our mission, we are actively working on projects focused on rural dev
 As part of our mission, we are actively working on projects focused on rural development, starting with bridging the digital divide in education. These initiatives also aim to enhance local livelihoods and promote long-term community growth. Our ongoing projects are described below.
 >>>>>>> 2afefd0 (typos fixed-Zone.Identifier files removed)
 
-### Portable lighting for rural classrooms 
+**Portable lighting for rural classrooms**
 
 This project offers a portable, easy-to-assemble lighting solution for rural classrooms where electricity is limited or unreliable. 
 
-### Local Content Solutions for Remote Classrooms 
+**Local Content Solutions for Remote Classrooms** 
  
 <<<<<<< HEAD
 <<<<<<< HEAD
