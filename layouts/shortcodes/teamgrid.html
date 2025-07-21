@@ -1,20 +1,20 @@
+
 <style>
   .team-grid {
     display: grid;
-    grid-template-columns: repeat(3, 220px);
-    grid-template-rows: repeat(3, auto);
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 2rem;
-    justify-content: center;
+    justify-items: center;
     padding-top: 2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
-
   .team-member {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
   }
-
   .image-wrapper {
     width: 170px;
     height: 170px;
@@ -22,46 +22,51 @@
     overflow: hidden;
     background-color: #e0e0e0;
   }
-
   .image-wrapper img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
   }
-
   .team-member h3 {
     font-size: 1em;
     margin: 0.4em 0 0.2em;
   }
-
   .team-member h3 a {
     text-decoration: none;
     color: inherit;
   }
-
   .team-member h3 span a {
     font-size: 0.85em;
     color: #0077cc;
   }
-
   .team-member p.role {
     font-weight: normal;
     font-size: 0.85em;
     color: #555;
     margin-top: 0;
   }
-
   .team-member p.bio {
     font-size: 0.85em;
     color: #444;
   }
+  @media (max-width: 480px) {
+    .image-wrapper {
+      width: 120px;
+      height: 120px;
+    }
+    .team-member h3 {
+      font-size: 0.9em;
+    }
+    .team-member p.role,
+    .team-member p.bio {
+      font-size: 0.8em;
+    }
+  }
 </style>
-
 <div class="team-grid">
   {{ range .Page.Params.team }}
   <div class="team-member">
-
     {{ if .image }}
       <div class="image-wrapper">
         <img src="{{ .image | relURL }}" alt="{{ .name }}">
@@ -69,26 +74,20 @@
     {{ else }}
       <div class="image-wrapper"></div>
     {{ end }}
-
     <h3>
       {{ if .linkedin }}
         <a href="{{ .linkedin }}" target="_blank" rel="noopener noreferrer">{{ .name }}</a>
       {{ else }}
         {{ .name }}
       {{ end }}
-
       {{ if .blog }}
         <span>(<a href="{{ .blog }}" target="_blank" rel="noopener noreferrer">blog</a>)</span>
       {{ end }}
     </h3>
-
-    <!-- role with line break after comma -->
     <p class="role">{{ replaceRE `,` ",<br>" (.role) | safeHTML }}</p>
-
     {{ if .bio }}
       <p class="bio">{{ .bio }}</p>
     {{ end }}
-
   </div>
   {{ end }}
 </div>
