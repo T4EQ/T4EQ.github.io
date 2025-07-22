@@ -43,7 +43,7 @@ team:
     blog: ""
   - name: "Tereza Videva"
     role: "Founding member, System engineer"
-    image: ""
+    image: "/images/team/tvideva.jpeg"
     linkedin: "https://www.linkedin.com/in/terezavideva/"
     blog: ""
 ---

@@ -1,0 +1,31 @@
+/* Default logo style */
+.site-logo {
+  max-height: 40px;
+  width: auto;
+  margin-right: 10px;
+  vertical-align: middle;
+  transition: max-height 0.3s ease;
+}
+
+/* Navbar general style */
+.navbar {
+  min-height: 60px;
+  align-items: center;
+}
+
+.navbar-item {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+/* Smaller logo & header height for mobile */
+@media (max-width: 600px) {
+  .site-logo {
+    max-height: 12px;    /* Shrink logo more */
+    margin-right: 5px;
+  }
+  
+  .navbar {
+    min-height: 40px;    /* Reduce header height */
+  }
+}
