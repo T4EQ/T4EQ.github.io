@@ -13,7 +13,8 @@ As part of our mission, we are actively working on projects focused on rural dev
 
 This project offers a portable, easy-to-assemble lighting solution for rural classrooms where electricity is limited or unreliable. 
 
-**Local Content Solutions for Remote Classrooms** 
+**Offline video delivery system for remote classrooms** 
 
 This project offers a solution to the challenge of accessing educational content in low-bandwidth rural areas, where slow internet disrupts teaching and reduces student engagement.
 
+Please feel free to reach out for more information about the projects.
