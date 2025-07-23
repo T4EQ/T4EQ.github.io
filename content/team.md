@@ -47,7 +47,7 @@ team:
     linkedin: "https://www.linkedin.com/in/terezavideva/"
     blog: ""
 ---
-Our founding team is based in Switzerland —  we take care of all things engineering, management, partnerships and everything in between.
+Our founding team is based in Switzerland —  we take care of all things engineering, management, partnerships, and everything in between.
 
 Get to know us!
 {{< teamgrid >}}

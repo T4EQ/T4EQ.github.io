@@ -1,0 +1,17 @@
+{{ $align := .Get "align" | default "left" }}
+
+<div style="display: flex; align-items: center; gap: 20px; flex-wrap: wrap;">
+
+  {{ if eq $align "right" }}
+    <div style="flex: 1;">
+      {{ .Inner | markdownify }}
+    </div>
+    <img src="{{ .Get "img" }}" alt="{{ .Get "alt" }}" style="max-width: 300px; width: 100%; height: auto; border-radius: 8px;">
+  {{ else }}
+    <img src="{{ .Get "img" }}" alt="{{ .Get "alt" }}" style="max-width: 300px; width: 100%; height: auto; border-radius: 8px;">
+    <div style="flex: 1;">
+      {{ .Inner | markdownify }}
+    </div>
+  {{ end }}
+
+</div>
