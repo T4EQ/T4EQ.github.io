@@ -1,4 +1,4 @@
-baseURL = 'https://T4EQ.github.io/'
+baseURL = 'https://t4eq.org/'
 languageCode = 'en-us'
 title = 'T4EQ - Tech For Equality'
 theme = 'ananke'
@@ -25,3 +25,4 @@ fontWeight = "normal"
 # background_color_class = "bg-dark-blue "
 recent_posts_number = 1
 heading_font = "serif"
+canonicalURL = 'https://t4eq.org/'
