@@ -1,6 +1,6 @@
 baseURL = 'https://t4eq.org/'
 languageCode = 'en-us'
-title = 'T4EQ - Tech For Equality'
+title = 'T4EQ – Tech For Equality'
 theme = 'ananke'
 
 SectionPagesMenu = "main"
