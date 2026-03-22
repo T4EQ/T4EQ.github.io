@@ -1,4 +1,3 @@
-
 <style>
   .team-grid {
     display: grid;
@@ -58,8 +57,7 @@
     .team-member h3 {
       font-size: 0.9em;
     }
-    .team-member p.role,
-    .team-member p.bio {
+    .team-member p.role {
       font-size: 0.8em;
     }
   }
@@ -85,9 +83,6 @@
       {{ end }}
     </h3>
     <p class="role">{{ replaceRE `,` ",<br>" (.role) | safeHTML }}</p>
-    {{ if .bio }}
-      <p class="bio">{{ .bio }}</p>
-    {{ end }}
   </div>
   {{ end }}
 </div>
