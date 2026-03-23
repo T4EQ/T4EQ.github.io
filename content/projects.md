@@ -7,9 +7,11 @@ menu: main
 weight: 30
 ---
 
-As part of our mission, we are actively working on projects focused on rural development, starting
-by bridging the digital divide in education. These initiatives also aim to enhance local livelihoods
-and promote long-term community growth. Our ongoing projects are described below.
+As part of our mission, we are actively working on projects aligned with the Sustainable Development
+Goals ([SDGs](https://sdgs.un.org/goals)). Our initial efforts focus on SDG #4: Quality Education, particularly in the context
+of rural development. We begin by addressing the digital divide in education, ensuring better access
+to learning opportunities. These initiatives also aim to strengthen local livelihoods and support
+long-term community growth. Our ongoing projects are described below.
 
 **Low-bandwidth Educational Access Platform – [LEAP](https://github.com/t4eq/leap)**
 
