@@ -25,10 +25,10 @@
     "theme": {
       "flake": false,
       "locked": {
-        "lastModified": 1743234794,
-        "narHash": "sha256-gO8spSG2HqK7kpm0R5lnFHFsZQfQYU3Y+wkvBRKwa1Q=",
-        "rev": "a0019812ff62d978781392c765addbaee1c1eddf",
-        "revCount": 516,
+        "lastModified": 1774212649,
+        "narHash": "sha256-qi6JBjTAtwSx+Yt8LuHGFpZ/JEsTmy0CsXBxNGLTc+s=",
+        "rev": "82bb78729d412a933355065326edd66b8b8413ff",
+        "revCount": 522,
         "type": "git",
         "url": "file:themes/ananke"
       },
