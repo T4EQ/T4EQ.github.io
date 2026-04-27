@@ -10,6 +10,8 @@ weight: 40
 
 **Open source tech projects for NGOs**
 
-If you think one of our ongoing projects could help your projects too, feel free to get in touch with us. We will be happy to discuss with you.
+If any of our ongoing projects align with your initiatives, or if you’re interested in collaborating on a new one, please feel free to get in touch.
+
+We will be happy to discuss with you.
 
 {{< /serviceimage >}}
