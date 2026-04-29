@@ -1,6 +1,6 @@
 baseURL = 'https://t4eq.org/'
 languageCode = 'en-us'
-title = 'T4EQ – Tech For Equality'
+title = 'T4EQ – Tech for Equality'
 theme = 'ananke'
 
 SectionPagesMenu = "main"
@@ -17,7 +17,7 @@ filename = "sitemap.xml"
 text_color = "black"
 author = ""
 favicon = ""
-site_logo = "/images/logo/T4EQ_Logo_w.png"
+site_logo = "/images/logo/2026-03-26_T4EQ_Logo-Screen-negative.png"
 description = "The last theme you'll ever need. Maybe."
 body_classes = "avenir bg-near-white"
 fontWeight = "normal"
