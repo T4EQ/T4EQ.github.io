@@ -26,3 +26,4 @@ fontWeight = "normal"
 recent_posts_number = 1
 heading_font = "serif"
 canonicalURL = 'https://t4eq.org/'
+custom_css = ["ananke/css/custom.css"]

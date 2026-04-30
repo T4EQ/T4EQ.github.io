@@ -1,0 +1,19 @@
+<nav class="flex justify-between items-center pv3 ph3">
+  <!-- Logo -->
+  <a href="/">
+    <img src="/images/logo/2026-03-26_T4EQ_Logo-Screen-negative.png" alt="Logo">
+  </a>
+
+  <!-- The Toggle -->
+  <input type="checkbox" id="menu-toggle" class="dn">
+  <label for="menu-toggle" class="dn-l pointer">☰</label>
+
+  <!-- The Links -->
+  <ul class="list pa0 ma0 nav-menu">
+    {{ range .Site.Menus.main }}
+      <li class="dib-l ml3-l">
+        <a class="white-90 hover-white" href="{{ .URL }}">{{ .Name }}</a>
+      </li>
+    {{ end }}
+  </ul>
+</nav>
