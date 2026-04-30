@@ -28,7 +28,7 @@ header img {
     /* Logo - Pulled left to compensate for its internal whitespace */
     header img {
         height: 110px !important; 
-        margin-left: -20px !important; /* PULLS LOGO LEFT */
+        margin-left: -23px !important; /* PULLS LOGO LEFT */
         padding-left: 1rem !important; 
         margin-top: 10px !important;
         display: block !important;
