@@ -46,7 +46,7 @@ header h2.fw1 {
 /* ============================================================
    2. MOBILE STYLES (Under 600px)
    ============================================================ */
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 900px) {
 
     /* HIDE THE TITLE */
     header h1.f2, header h1.f1-l, header h1.f2-m, 
