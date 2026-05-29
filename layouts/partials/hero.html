@@ -1,0 +1,205 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --off-white: #f5f5f0; 
+    --logo-tint: brightness(0.95) sepia(0.05); 
+    --grid-line: 1px solid rgba(245, 245, 240, 0.2); 
+    --side-padding: clamp(30px, 6vw, 100px);
+
+    /* --- ADJUSTMENT CONTROLS --- */
+    --header-vertical-pos: 40px;      
+    --nav-top-nudge: 50px;            /* Use this to pixel-perfect the top alignment */
+    --center-content-push: 8vh;      
+    --bg-brightness: 0.98;            
+  }
+
+  /* 1. LAYOUT & BACKGROUND */
+  .hero-layout {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background-color: #000;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .hero-bg-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('{{ "images/hero-bg.jpg" | relURL }}');
+    background-size: cover;
+    background-position: center;
+    filter: blur(8px);
+    transform: scale(1.1);
+    z-index: 0;
+    opacity: var(--bg-brightness); 
+  }
+
+  /* THE GRID */
+  .grid-structure {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    padding: 0 var(--side-padding); 
+    z-index: 1;
+    pointer-events: none;
+  }
+  .grid-column {
+    flex: 1; 
+    height: 100%;
+    border-right: var(--grid-line);
+  }
+  .grid-column:last-child { border-right: none; }
+
+  /* 2. HEADER: TOP ALIGNED */
+  .hero-header {
+    display: flex;
+    justify-content: space-between;
+    /* Changed from center to flex-start for top alignment */
+    align-items: flex-start; 
+    padding: var(--header-vertical-pos) var(--side-padding);
+    z-index: 100;
+    width: 100%;
+  }
+
+  #menu-toggle { display: none; }
+  .menu-icon {
+    display: none; 
+    font-size: 2.2rem;
+    color: var(--off-white);
+    cursor: pointer;
+  }
+
+  .hero-nav {
+    display: flex;
+    gap: 3vw;
+    /* Added nudge to account for font line-height vs logo top edge */
+    padding-top: var(--nav-top-nudge); 
+  }
+  .hero-nav a {
+    font-family: 'Roboto Mono', monospace !important;
+    font-weight: 500 !important;
+    font-size: clamp(1.1rem, 1.4vw, 2.1rem) !important; 
+    color: var(--off-white) !important;
+    text-decoration: none !important;
+    letter-spacing: -0.05em;
+    line-height: 1; /* Tightens the text box for better alignment */
+  }
+
+  .top-right-logo {
+    height: clamp(60px, 16vh, 210px) !important; 
+    filter: var(--logo-tint);
+    display: block;
+  }
+
+  /* 3. MAIN CENTER ROW */
+  .hero-center-zone {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding: 0 var(--side-padding) var(--center-content-push) var(--side-padding);
+    z-index: 10;
+  }
+
+  .hero-flex-row {
+    display: flex;
+    width: 100%;
+    justify-content: flex-start; 
+    align-items: flex-end;
+  }
+
+  .main-logo-box { 
+    flex: 0 0 auto; 
+    width: 50vw; 
+    max-width: 900px; 
+  }
+  .main-logo-box img { 
+    width: 100%; 
+    height: auto; 
+    filter: var(--logo-tint); 
+    display: block; 
+  }
+
+  .vision-box { 
+    margin-left: 12vw; 
+    flex: 0 1 45rem; 
+    margin-bottom: 30px; 
+  }
+
+  .vision-text {
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 300 !important;
+    font-size: clamp(1.4rem, 2.2vw, 2.8rem) !important; 
+    line-height: 1.15 !important; 
+    color: var(--off-white) !important;
+    letter-spacing: -0.03em;
+    text-shadow: 0px 2px 10px rgba(0,0,0,0.8);
+  }
+
+  /* MOBILE ADAPTATION */
+  @media screen and (max-width: 900px) {
+    .menu-icon { display: block; } 
+    .hero-nav {
+      display: none; 
+      position: absolute;
+      top: 100px;
+      left: 0;
+      width: 100%;
+      background: rgba(0,0,0,0.96);
+      flex-direction: column;
+      padding: 40px var(--side-padding);
+      gap: 25px;
+    }
+    #menu-toggle:checked ~ .hero-nav { display: flex; }
+    .main-logo-box { display: none !important; }
+    .hero-flex-row { flex-direction: column; align-items: flex-start; }
+    .vision-box { margin-left: 0; width: 100%; max-width: 100%; }
+    .grid-structure { display: none; }
+  }
+</style>
+
+<div class="hero-layout">
+  <div class="hero-bg-image"></div>
+  <div class="absolute inset-0 w-100 vh-100 bg-black-10" style="z-index: 1;"></div>
+
+  <div class="grid-structure">
+    <div class="grid-column"></div>
+    <div class="grid-column"></div>
+    <div class="grid-column"></div>
+  </div>
+
+  <header class="hero-header">
+      <input type="checkbox" id="menu-toggle">
+      <label for="menu-toggle" class="menu-icon">☰</label>
+      
+      <nav class="hero-nav">
+          <a href="/about">About</a>
+          <a href="/team">Team</a>
+          <a href="/projects">Projects</a>
+          <a href="/services">Services</a>
+          <a href="/partners">Partners</a>
+          <a href="/contact">Contact</a>
+      </nav>
+      
+      <img src="{{ "images/logo-desktop.png" | relURL }}" alt="Logo" class="top-right-logo">
+  </header>
+
+  <div class="hero-center-zone">
+      <div class="hero-flex-row">
+        <div class="main-logo-box">
+          <img src="{{ "images/logo-desktop.png" | relURL }}" alt="T4EQ Logo">
+        </div>
+        <div class="vision-box">
+          <p class="vision-text">
+            We envision a world where technology bridges inequality and gives every individual the tools to live with dignity and opportunity.
+          </p>
+        </div>
+      </div>
+  </div>
+</div>
