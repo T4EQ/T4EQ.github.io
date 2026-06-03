@@ -74,12 +74,13 @@ body {
 
 /* ── Navigation ── */
 .site-nav {
-  position: absolute;
-  top: 0; left: 0; right: 0;
+  position: sticky;
+  top: 0;
   z-index: 100;
   height: var(--nav-height);
   display: flex;
   align-items: center;
+  background: var(--color-purple-dark);
 }
 
 .site-nav .container {
@@ -145,7 +146,7 @@ body {
 .hero-content {
   position: relative;
   z-index: 2;
-  padding: calc(var(--nav-height) + var(--space-lg)) var(--space-md) var(--space-lg);
+  padding: var(--space-lg) var(--space-md);
   max-width: 560px;
 }
 
@@ -161,7 +162,7 @@ body {
 .hero-tagline {
   position: relative;
   z-index: 2;
-  padding: calc(var(--nav-height) + var(--space-lg)) var(--space-md) var(--space-lg);
+  padding: var(--space-lg) var(--space-md);
   align-self: center;
 }
 
@@ -357,7 +358,7 @@ body {
 .page-hero-content {
   position: relative;
   z-index: 2;
-  padding: calc(var(--nav-height) + var(--space-lg)) var(--space-md) var(--space-lg);
+  padding: var(--space-lg) var(--space-md);
 }
 
 .page-title {
@@ -371,7 +372,7 @@ body {
 .page-hero-body {
   position: relative;
   z-index: 2;
-  padding: calc(var(--nav-height) + var(--space-lg)) var(--space-md) var(--space-lg);
+  padding: var(--space-lg) var(--space-md);
 }
 
 .page-hero-body p {
