@@ -1,0 +1,55 @@
+{{ define "main" }}
+
+{{/* ── Hero ── */}}
+<section class="page-hero page-hero--solid section--purple" aria-label="Page header">
+  <div class="grid-columns" aria-hidden="true">
+    <div class="grid-col"></div><div class="grid-col"></div><div class="grid-col"></div>
+  </div>
+  <div class="page-hero-content">
+    <h1 class="page-title">{{ .Params.hero_title | default .Title }}</h1>
+  </div>
+  {{ with .Params.hero_text }}
+  <div class="page-hero-body">
+    <p>{{ . }}</p>
+  </div>
+  {{ end }}
+</section>
+
+{{/* ── Who we are ── */}}
+{{ range .Params.sections }}
+<section class="section {{ if eq .style "purple" }}section--purple{{ else }}section--offwhite{{ end }}">
+  <div class="container">
+    {{ with .title }}<h2 class="section-title">{{ . }}</h2>{{ end }}
+    {{ with .text }}
+    <div class="section-body">{{ . | markdownify }}</div>
+    {{ end }}
+  </div>
+</section>
+{{ end }}
+
+{{/* ── Team grid ── */}}
+<section class="section section--offwhite">
+  <div class="container">
+    <div class="team-grid">
+      {{ $members := slice
+        (dict "slug" "ppadmanabhan" "ext" "jpg"  "name" "Priya Padmanabhan")
+        (dict "slug" "jalvarez"     "ext" "jpg"  "name" "Jose Alvarez")
+        (dict "slug" "adichele"     "ext" "jpeg" "name" "Alessandro Di Chele")
+        (dict "slug" "jfrohnhofen" "ext" "jpeg" "name" "Jonas Frohnhofen")
+        (dict "slug" "rchithambaram" "ext" "jpeg" "name" "Ragu Chithambaram")
+        (dict "slug" "apiotto"      "ext" "jpg"  "name" "Alessandro Piotto")
+        (dict "slug" "tvideva"      "ext" "jpeg" "name" "Teodora Videva")
+      }}
+      {{ range $members }}
+      <article class="team-card">
+        <div class="team-photo">
+          <img src="/images/team/{{ .slug }}.{{ .ext }}" alt="{{ .name }}" loading="lazy">
+        </div>
+        <h3 class="team-name">{{ .name }}</h3>
+      </article>
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+{{ end }}
