@@ -1,49 +1,43 @@
 {{ define "main" }}
 
-{{/* ── Page Hero ── */}}
-<section class="{{ if .Params.hero_image }}page-hero{{ else }}page-hero page-hero--solid section--purple{{ end }}" aria-label="Page header">
-
+{{/* ── HERO — purple, standard ── */}}
+<section class="page-hero" aria-label="Page header">
   {{ with .Params.hero_image }}
   <img class="page-hero-bg" src="{{ . }}" alt="" aria-hidden="true">
   {{ end }}
-
   <div class="grid-columns" aria-hidden="true">
     <div class="grid-col"></div><div class="grid-col"></div><div class="grid-col"></div>
   </div>
-
-  <div class="page-hero-content">
-    <h1 class="page-title">{{ .Params.hero_title | default .Title }}</h1>
+  <div class="container">
+    {{ if .Params.hero_text }}
+    <div class="hero-inner">
+      <h1 class="hero-title">{{ .Params.hero_title | default .Title }}</h1>
+      <p class="hero-sub">{{ .Params.hero_text }}</p>
+    </div>
+    {{ else }}
+    <div class="hero-inner hero-inner--single">
+      <h1 class="hero-title">{{ .Params.hero_title | default .Title }}</h1>
+    </div>
+    {{ end }}
   </div>
-
-  {{ with .Params.hero_text }}
-  <div class="page-hero-body">
-    <p>{{ . }}</p>
-  </div>
-  {{ end }}
 </section>
 
-{{/* ── Page body sections ── */}}
-{{ range .Params.sections }}
-<section class="section {{ if eq .style "purple" }}section--purple{{ else }}section--offwhite{{ end }}">
+{{/* ── FRONT-MATTER SECTIONS — alternating offwhite / purple ── */}}
+{{ range $i, $s := .Params.sections }}
+<section class="section {{ if eq (mod $i 2) 0 }}section--offwhite{{ else }}section--purple{{ end }}">
   <div class="container">
-    {{ with .title }}
+    {{ with $s.title }}
     <div class="section-header">
       <h2 class="section-title">{{ . }}</h2>
-      {{ with $.Params.section_intro }}<p class="section-intro">{{ . }}</p>{{ end }}
+      {{ with $s.intro }}<p class="section-intro">{{ . }}</p>{{ end }}
     </div>
     {{ end }}
-
-    {{ with .intro }}<p class="section-intro">{{ . }}</p>{{ end }}
-
-    {{ with .text }}
-    <div class="section-body" style="font-family: var(--font-sans); font-size: 1.05rem; line-height: 1.75; max-width: 780px; opacity: .9;">
-      {{ . | markdownify }}
-    </div>
+    {{ with $s.text }}
+    <div class="section-body">{{ . | markdownify }}</div>
     {{ end }}
-
-    {{ if .cards }}
+    {{ if $s.cards }}
     <div class="card-grid">
-      {{ range .cards }}
+      {{ range $s.cards }}
       <article class="card">
         <h3 class="card-title">{{ .title }}</h3>
         <p class="card-text">{{ .text }}</p>
@@ -56,13 +50,11 @@
 </section>
 {{ end }}
 
-{{/* ── Markdown body (fallback for simpler pages) ── */}}
+{{/* ── MARKDOWN BODY — offwhite (stub pages: About, Contact, Partners) ── */}}
 {{ if .Content }}
 <section class="section section--offwhite">
   <div class="container">
-    <div class="prose" style="font-family: var(--font-sans); font-size: 1.05rem; line-height: 1.75; max-width: 780px;">
-      {{ .Content }}
-    </div>
+    <div class="section-body">{{ .Content }}</div>
   </div>
 </section>
 {{ end }}
