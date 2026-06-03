@@ -1,0 +1,100 @@
+{{ define "main" }}
+
+{{/* ── Hero ── */}}
+<section class="hero" aria-label="Hero">
+  {{ with .Params.hero_image }}
+  <img class="hero-bg" src="{{ . }}" alt="" aria-hidden="true">
+  {{ end }}
+
+  {{/* Subtle 3-column grid overlay (design detail from Figma) */}}
+  <div class="grid-columns" aria-hidden="true">
+    <div class="grid-col"></div><div class="grid-col"></div><div class="grid-col"></div>
+  </div>
+
+  <div class="hero-content">
+    <h1 class="hero-title">{{ .Site.Title | replaceRE "^(T4EQ|T4 EQ)$" "T4 | Tech for\nEQ | Equality" | safeHTML }}</h1>
+  </div>
+  <div class="hero-tagline">
+    <p>{{ .Params.tagline | default .Site.Params.tagline }}</p>
+  </div>
+</section>
+
+{{/* ── Our Values ── */}}
+<section class="section section--purple" id="values">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">{{ .Params.values_title | default "Our Values" }}</h2>
+      {{ with .Params.values_intro }}
+      <p class="section-intro">{{ . }}</p>
+      {{ end }}
+    </div>
+
+    <div class="card-grid">
+      {{ range .Params.values }}
+      <article class="card">
+        <h3 class="card-title">{{ .title }}</h3>
+        <p class="card-text">{{ .text }}</p>
+        {{ with .link }}
+        <a href="{{ .url }}" class="btn">{{ .label }} →</a>
+        {{ end }}
+      </article>
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+{{/* ── Our Expertise ── */}}
+<section class="section section--purple" id="expertise">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">{{ .Params.expertise_title | default "Our Expertise" }}</h2>
+      {{ with .Params.expertise_intro }}
+      <p class="section-intro">{{ . }}</p>
+      {{ end }}
+    </div>
+
+    <div class="card-grid">
+      {{ range .Params.expertise }}
+      <article class="card">
+        <h3 class="card-title">{{ .title }}</h3>
+        <p class="card-text">{{ .text }}</p>
+        {{ with .link }}
+        <a href="{{ .url }}" class="btn">{{ .label }} →</a>
+        {{ end }}
+      </article>
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+{{/* ── Project Highlight ── */}}
+{{ with .Params.highlight }}
+<section class="project-highlight" aria-label="Project highlight">
+  {{ with .image }}
+  <img class="project-highlight-bg" src="{{ . }}" alt="" aria-hidden="true">
+  {{ end }}
+
+  <div class="grid-columns" aria-hidden="true">
+    <div class="grid-col"></div><div class="grid-col"></div><div class="grid-col"></div>
+  </div>
+
+  <div class="project-highlight-content container">
+    <h2 class="section-title" style="color: var(--color-offwhite); margin-bottom: 2rem;">
+      {{ $.Params.highlight_section_title | default "Project Highlight" }}
+    </h2>
+    <div class="project-card">
+      <div class="project-card-meta">
+        {{ with .name }}<strong>{{ . }}</strong><br>{{ end }}
+        {{ with .date }}{{ . }}<br>{{ end }}
+        {{ with .place }}{{ . }}{{ end }}
+      </div>
+      <p class="project-card-text">{{ .text }}</p>
+      {{ with .link }}
+      <a href="{{ .url }}" class="btn btn--green">{{ .label }} →</a>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}
+
+{{ end }}

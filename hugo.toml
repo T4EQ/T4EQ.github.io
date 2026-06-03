@@ -3,20 +3,38 @@ languageCode = "en-us"
 title = "T4EQ — Tech for Equality"
 theme = "t4eq"
 
-[menus]
-  [[menus.main]]
+[params]
+  description = "We envision a world where technology bridges inequality and gives every individual the tools to live with dignity and opportunity."
+  tagline = "We envision a world where technology bridges inequality and gives every individual the tools to live with dignity and opportunity."
+  ogImage = "/images/og-image.png"
+
+[menu]
+  [[menu.main]]
     name = "About"
     url = "/about/"
     weight = 1
-  [[menus.main]]
+  [[menu.main]]
     name = "Our work"
     url = "/projects/"
     weight = 2
-  [[menus.main]]
+  [[menu.main]]
     name = "Partners"
     url = "/partners/"
     weight = 3
-  [[menus.main]]
+  [[menu.main]]
     name = "Contacts"
-    url = "/contacts/"
+    url = "/contact/"
     weight = 4
+
+  [[menu.footer]]
+    name = "Tech for Equality"
+    url = "/"
+    weight = 1
+
+[build]
+  writeStats = true
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true

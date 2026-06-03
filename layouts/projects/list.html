@@ -1,0 +1,62 @@
+{{ define "main" }}
+
+{{/* ── Page Hero — solid purple bg, matches Projects.png ── */}}
+<section class="page-hero page-hero--solid section--purple" style="display:block; padding-top: var(--nav-height);">
+  <div class="container" style="padding-top: var(--space-lg); padding-bottom: var(--space-lg);">
+    <h1 class="page-title" style="margin-bottom: var(--space-md);">{{ .Title }}</h1>
+    {{ with .Params.intro }}
+    <p class="section-intro" style="max-width: 680px;">{{ . }}</p>
+    {{ end }}
+  </div>
+</section>
+
+{{/* ── Projects list ── */}}
+<section class="section section--purple">
+  <div class="container">
+    <div class="projects-list">
+
+      {{/* Projects defined in front matter */}}
+      {{ range .Params.projects }}
+      <article class="project-item">
+        <div class="project-item-content">
+          <div>
+            <h2 class="project-name">{{ .name }}</h2>
+            {{ with .subtitle }}<p class="project-subtitle">{{ . }}</p>{{ end }}
+          </div>
+          <p class="project-description">{{ .description }}</p>
+          {{ with .link }}
+          <a href="{{ .url }}" class="btn">{{ .label }} →</a>
+          {{ end }}
+        </div>
+        {{ with .image }}
+        <div class="project-item-image">
+          <img src="{{ . }}" alt="{{ $.Title }} project illustration">
+        </div>
+        {{ end }}
+      </article>
+      {{ end }}
+
+      {{/* Also list any child pages in the projects section */}}
+      {{ range .Pages }}
+      <article class="project-item">
+        <div class="project-item-content">
+          <div>
+            <h2 class="project-name">{{ .Title }}</h2>
+            {{ with .Params.subtitle }}<p class="project-subtitle">{{ . }}</p>{{ end }}
+          </div>
+          <p class="project-description">{{ .Description | default .Summary }}</p>
+          <a href="{{ .Permalink }}" class="btn">Read more →</a>
+        </div>
+        {{ with .Params.image }}
+        <div class="project-item-image">
+          <img src="{{ . }}" alt="{{ $.Title }}">
+        </div>
+        {{ end }}
+      </article>
+      {{ end }}
+
+    </div>
+  </div>
+</section>
+
+{{ end }}
