@@ -104,10 +104,8 @@ body {
 }
 
 .nav-logo-img {
-  /* viewBox="0 0 1329.54 583.1" → ratio ≈ 2.28 */
   height: 28px;
   width: auto;
-  aspect-ratio: 1329.54 / 583.1;
   display: block;
 }
 
@@ -180,7 +178,6 @@ body {
 .hero-logo-img {
   width: min(360px, 80%);
   height: auto;
-  aspect-ratio: 1329.54 / 583.1;
   display: block;
 }
 
