@@ -1,65 +1,68 @@
 {{ define "main" }}
 
-{{/* ── HERO — purple, standard ── */}}
-<section class="page-hero" aria-label="Page header">
-  <div class="grid-columns" aria-hidden="true">
-    <div class="grid-col"></div><div class="grid-col"></div><div class="grid-col"></div>
-  </div>
+{{/* ── INTRO — offwhite (no hero, matches Figma) ── */}}
+<section class="section section--offwhite projects-intro">
   <div class="container">
-    <div class="hero-inner">
-      <h1 class="hero-title">{{ .Title }}</h1>
-      {{ with .Params.intro }}<p class="hero-sub">{{ . }}</p>{{ end }}
-    </div>
+    <h1 class="section-title">{{ .Title }}</h1>
+    {{ with .Params.intro }}<p class="section-intro" style="margin-top: var(--space-sm);">{{ . }}</p>{{ end }}
   </div>
 </section>
 
-{{/* ── PROJECTS LIST — offwhite ── */}}
-<section class="section section--offwhite">
+{{/* ── PROJECT ITEMS — alternating offwhite / purple-tint ── */}}
+{{ range $i, $p := .Params.projects }}
+<section class="section {{ if eq (mod $i 2) 0 }}section--white{{ else }}section--offwhite{{ end }} project-section">
+  <div class="container project-row">
+    <div class="project-row-info">
+      {{ with $p.community }}<span class="project-tag">{{ . }}</span>{{ end }}
+      <h2 class="project-name">{{ $p.name }}</h2>
+      {{ with $p.subtitle }}<p class="project-subtitle">{{ . }}</p>{{ end }}
+      <p class="project-description">{{ $p.description }}</p>
+      {{ with $p.link }}
+      <a href="{{ .url }}" class="btn btn--purple">{{ .label }} →</a>
+      {{ end }}
+    </div>
+    <div class="project-row-media">
+      {{ if $p.image }}
+      <img src="{{ $p.image }}" alt="{{ $p.name }}">
+      {{ else }}
+      <div class="project-placeholder"></div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}
+
+{{ range $i, $page := .Pages }}
+<section class="section {{ if eq (mod $i 2) 0 }}section--white{{ else }}section--offwhite{{ end }} project-section">
+  <div class="container project-row">
+    <div class="project-row-info">
+      <h2 class="project-name">{{ $page.Title }}</h2>
+      {{ with $page.Params.subtitle }}<p class="project-subtitle">{{ . }}</p>{{ end }}
+      <p class="project-description">{{ $page.Description | default $page.Summary }}</p>
+      <a href="{{ $page.Permalink }}" class="btn btn--purple">Read more →</a>
+    </div>
+    <div class="project-row-media">
+      {{ with $page.Params.image }}
+      <img src="{{ . }}" alt="{{ $page.Title }}">
+      {{ else }}
+      <div class="project-placeholder"></div>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}
+
+{{/* ── WORK WITH US — purple CTA ── */}}
+<section class="section section--purple cta-section">
   <div class="container">
-    <div class="projects-list">
-
-      {{ range .Params.projects }}
-      <article class="project-item">
-        <div class="project-item-content">
-          <div>
-            <h2 class="project-name">{{ .name }}</h2>
-            {{ with .subtitle }}<p class="project-subtitle">{{ . }}</p>{{ end }}
-          </div>
-          <p class="project-description">{{ .description }}</p>
-          {{ with .link }}
-          <a href="{{ .url }}" class="btn btn--purple">{{ .label }} →</a>
-          {{ end }}
-        </div>
-        {{ with .image }}
-        <div class="project-item-image">
-          <img src="{{ . }}" alt="{{ $.Title }}">
-        </div>
-        {{ else }}
-        <div class="project-item-image"></div>
-        {{ end }}
-      </article>
-      {{ end }}
-
-      {{ range .Pages }}
-      <article class="project-item">
-        <div class="project-item-content">
-          <div>
-            <h2 class="project-name">{{ .Title }}</h2>
-            {{ with .Params.subtitle }}<p class="project-subtitle">{{ . }}</p>{{ end }}
-          </div>
-          <p class="project-description">{{ .Description | default .Summary }}</p>
-          <a href="{{ .Permalink }}" class="btn btn--purple">Read more →</a>
-        </div>
-        {{ with .Params.image }}
-        <div class="project-item-image">
-          <img src="{{ . }}" alt="{{ $.Title }}">
-        </div>
-        {{ else }}
-        <div class="project-item-image"></div>
-        {{ end }}
-      </article>
-      {{ end }}
-
+    <div class="hero-inner">
+      <div>
+        <h2 class="section-title">Work with us</h2>
+        <p class="section-intro" style="margin-top: var(--space-sm);">Have a project or challenge in mind? We'd love to hear from you.</p>
+      </div>
+      <div style="display:flex; align-items:center;">
+        <a href="/contact/" class="btn btn--green">Get in touch →</a>
+      </div>
     </div>
   </div>
 </section>

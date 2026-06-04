@@ -22,11 +22,11 @@
   --space-xs:  0.5rem;   /*  8px */
   --space-sm:  1rem;     /* 16px */
   --space-md:  2rem;     /* 32px */
-  --space-lg:  4rem;     /* 64px */
-  --space-xl:  6rem;     /* 96px */
+  --space-lg:  3rem;     /* 48px */
+  --space-xl:  5rem;     /* 80px */
 
   --max-width: 1140px;
-  --nav-height: 68px;
+  --nav-height: 64px;
 
   --radius-sm: 6px;
   --radius-md: 12px;
@@ -99,13 +99,14 @@ body {
 .nav-links a[aria-current] { opacity: 1; }
 
 .nav-logo {
-  font-family: var(--font-mono);
-  font-size: 0.82rem;
-  font-weight: 700;
-  color: var(--offwhite);
-  line-height: 1.5;
-  text-align: right;
-  letter-spacing: 0.04em;
+  display: flex;
+  align-items: center;
+}
+
+.nav-logo-img {
+  height: 36px;
+  width: auto;
+  display: block;
 }
 
 .nav-toggle {
@@ -266,20 +267,19 @@ body {
   transition: border-color 0.2s;
 }
 
-/* Card on dark (purple) section */
-.section--purple .card {
-  border: 1.5px solid rgba(245,245,244,0.22);
+/* Cards are always dark-filled — matches Figma */
+.card {
+  background: var(--purple);
   color: var(--offwhite);
+  border: none;
 }
-.section--purple .card:hover { border-color: rgba(245,245,244,0.5); }
+.card:hover { background: var(--purple-dark); }
 
-/* Card on light (offwhite) section */
-.section--offwhite .card {
-  border: 1.5px solid rgba(103,73,88,0.18);
-  color: var(--ink);
-  background: var(--white);
+/* On an already-purple section, lighten slightly so cards stand out */
+.section--purple .card {
+  background: var(--purple-light);
 }
-.section--offwhite .card:hover { border-color: rgba(103,73,88,0.4); }
+.section--purple .card:hover { background: var(--purple); }
 
 .card-title {
   font-family: var(--font-mono);
@@ -406,49 +406,44 @@ body {
 }
 
 /* ════════════════════════════════════════════════
-   PROJECTS LIST  (Our work page)
+   PROJECTS PAGE
    ════════════════════════════════════════════════ */
 
-.projects-list {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-lg);
-}
+.section--white { background: var(--white); color: var(--ink); }
 
-.project-item {
-  border: 1.5px solid rgba(103,73,88,0.18);
-  border-radius: var(--radius-lg);
-  overflow: hidden;
+.projects-intro { padding-bottom: var(--space-lg); }
+
+.project-section { border-top: 1px solid rgba(103,73,88,0.1); }
+
+.project-row {
   display: grid;
-  grid-template-columns: 3fr 2fr;
-  background: var(--white);
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+  align-items: center;
 }
 
-.project-item-content {
-  padding: var(--space-md);
+.project-row-info {
   display: flex;
   flex-direction: column;
   gap: var(--space-sm);
 }
 
-.project-item-image {
-  position: relative;
-  min-height: 260px;
-  background: var(--purple);
-}
-
-.project-item-image img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0.7;
+.project-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--green);
+  border: 1px solid var(--green);
+  border-radius: var(--radius-sm);
+  padding: 2px 8px;
+  width: fit-content;
 }
 
 .project-name {
   font-family: var(--font-mono);
-  font-size: 1.5rem;
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
   font-weight: 700;
   color: var(--purple);
 }
@@ -465,8 +460,34 @@ body {
   font-size: 0.92rem;
   line-height: 1.7;
   color: var(--ink);
-  flex: 1;
 }
+
+.project-row-media {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  background: var(--purple);
+}
+
+.project-row-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.project-placeholder {
+  width: 100%;
+  height: 100%;
+  min-height: 260px;
+  background: var(--purple-light);
+  border-radius: var(--radius-md);
+  opacity: 0.5;
+}
+
+.cta-section { }
+
+/* legacy — kept for any existing references */
+.projects-list { display: flex; flex-direction: column; gap: var(--space-lg); }
 
 /* ════════════════════════════════════════════════
    TEAM GRID
@@ -502,10 +523,18 @@ body {
 .team-name {
   font-family: var(--font-mono);
   font-size: 0.82rem;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--ink);
   text-align: center;
   margin-top: var(--space-xs);
+}
+
+.team-role {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  color: var(--ink-muted);
+  text-align: center;
+  line-height: 1.4;
 }
 
 /* ════════════════════════════════════════════════
@@ -552,11 +581,10 @@ body {
    ════════════════════════════════════════════════ */
 
 @media (max-width: 900px) {
-  .hero-inner { grid-template-columns: 1fr; gap: var(--space-md); }
-  .card-grid  { grid-template-columns: 1fr 1fr; }
-  .project-item { grid-template-columns: 1fr; }
-  .project-item-image { min-height: 200px; }
-  .team-grid  { grid-template-columns: repeat(3, 1fr); }
+  .hero-inner   { grid-template-columns: 1fr; gap: var(--space-md); }
+  .card-grid    { grid-template-columns: 1fr 1fr; }
+  .project-row  { grid-template-columns: 1fr; }
+  .team-grid    { grid-template-columns: repeat(3, 1fr); }
 }
 
 @media (max-width: 640px) {

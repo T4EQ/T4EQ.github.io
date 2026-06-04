@@ -1,6 +1,6 @@
 {{ define "main" }}
 
-{{/* ── HERO — purple, standard ── */}}
+{{/* ── HERO ── */}}
 <section class="page-hero" aria-label="Page header">
   <div class="grid-columns" aria-hidden="true">
     <div class="grid-col"></div><div class="grid-col"></div><div class="grid-col"></div>
@@ -40,20 +40,24 @@
   <div class="container">
     <div class="team-grid">
       {{ $members := slice
-        (dict "slug" "ppadmanabhan" "ext" "jpg"  "name" "Priya Padmanabhan")
-        (dict "slug" "jalvarez"     "ext" "jpg"  "name" "Jose Alvarez")
-        (dict "slug" "adichele"     "ext" "jpeg" "name" "Alessandro Di Chele")
-        (dict "slug" "jfrohnhofen"  "ext" "jpeg" "name" "Jonas Frohnhofen")
-        (dict "slug" "rchithambaram" "ext" "jpeg" "name" "Ragu Chithambaram")
-        (dict "slug" "apiotto"      "ext" "jpg"  "name" "Alessandro Piotto")
-        (dict "slug" "tvideva"      "ext" "jpeg" "name" "Teodora Videva")
+        (dict "slug" "ppadmanabhan"   "ext" "jpg"  "name" "Preethi Padmanabhan"      "role" "Founder · System/Electrical Engineer")
+        (dict "slug" "jalvarez"       "ext" "jpg"  "name" "Javier Alvarez"            "role" "Founding Member · Embedded Software Engineer")
+        (dict "slug" "adichele"       "ext" "jpeg" "name" "Andrea Di Chele"           "role" "Founding Member · Mechanical/System Engineer")
+        (dict "slug" "jfrohnhofen"    "ext" "jpeg" "name" "Johannes Frohnhofen"       "role" "Founding Member · Software Engineer")
+        (dict "slug" "rchithambaram"  "ext" "jpeg" "name" "Ranjini Chithambaram"      "role" "Founding Member · Software Engineer")
+        (dict "slug" "apiotto"        "ext" "jpg"  "name" "Alessandro Piotto"         "role" "Founding Member · Optical/System Engineer")
+        (dict "slug" "naveen"         "ext" ""     "name" "Naveen Shanmugasundaram"   "role" "Founding Member · Security Engineer")
+        (dict "slug" "tvideva"        "ext" "jpeg" "name" "Tereza Videva"             "role" "Founding Member · System Engineer")
       }}
       {{ range $members }}
       <article class="team-card">
         <div class="team-photo">
+          {{ if .ext }}
           <img src="/images/team/{{ .slug }}.{{ .ext }}" alt="{{ .name }}" loading="lazy">
+          {{ end }}
         </div>
         <p class="team-name">{{ .name }}</p>
+        <p class="team-role">{{ .role }}</p>
       </article>
       {{ end }}
     </div>
