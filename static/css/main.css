@@ -104,7 +104,7 @@ body {
 }
 
 .nav-logo-img {
-  height: 28px;
+  height: 38px;
   width: auto;
   display: block;
 }
@@ -176,7 +176,7 @@ body {
 
 /* Logo image used as the hero title on the homepage */
 .hero-logo-img {
-  width: min(360px, 80%);
+  width: min(440px, 90%);
   height: auto;
   display: block;
 }
