@@ -132,7 +132,7 @@ body {
 
 /* Home hero: taller, vertically centred */
 .page-hero--home {
-  min-height: 80vh;
+  min-height: 90vh;
   display: flex;
   align-items: center;
 }
@@ -143,7 +143,7 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.5;
+  opacity: 1;
 }
 
 /* subtle column lines (Figma design detail) */
@@ -361,9 +361,10 @@ body {
 
 .project-highlight {
   position: relative;
-  padding: var(--space-xl) 0;
+  padding: calc(var(--space-xl) * 2) 0;
   background: var(--purple-dark);
   overflow: hidden;
+  min-height: 500px;
 }
 
 .project-highlight-bg {
@@ -372,7 +373,7 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.45;
+  opacity: 1;
 }
 
 .project-highlight-content {
