@@ -20,13 +20,13 @@
   </div>
 </section>
 
-{{/* ── OUR VALUES — offwhite ── */}}
-<section class="section section--offwhite">
+{{/* ── OUR VALUES ── */}}
+<section class="section section--purple">
+  <div class="title-bar"><div class="container">
+    <h2 class="section-title">{{ .Params.values_title | default "Our Values" }}</h2>
+  </div></div>
   <div class="container">
-    <div class="section-header">
-      <h2 class="section-title">{{ .Params.values_title | default "Our Values" }}</h2>
-      {{ with .Params.values_intro }}<p class="section-intro">{{ . }}</p>{{ end }}
-    </div>
+    {{ with .Params.values_intro }}<p class="section-intro">{{ . }}</p>{{ end }}
     <div class="card-grid">
       {{ range .Params.values }}
       <article class="card">
@@ -39,13 +39,13 @@
   </div>
 </section>
 
-{{/* ── OUR EXPERTISE — purple ── */}}
+{{/* ── OUR EXPERTISE ── */}}
 <section class="section section--purple">
+  <div class="title-bar"><div class="container">
+    <h2 class="section-title">{{ .Params.expertise_title | default "Our Expertise" }}</h2>
+  </div></div>
   <div class="container">
-    <div class="section-header">
-      <h2 class="section-title">{{ .Params.expertise_title | default "Our Expertise" }}</h2>
-      {{ with .Params.expertise_intro }}<p class="section-intro">{{ . }}</p>{{ end }}
-    </div>
+    {{ with .Params.expertise_intro }}<p class="section-intro">{{ . }}</p>{{ end }}
     <div class="card-grid">
       {{ range .Params.expertise }}
       <article class="card">
@@ -58,23 +58,23 @@
   </div>
 </section>
 
-{{/* ── PROJECT HIGHLIGHT — purple-dark ── */}}
+{{/* ── PROJECT HIGHLIGHT ── */}}
 {{ with .Params.highlight }}
-<section class="project-highlight" aria-label="Project highlight">
-  {{ with .image }}<img class="project-highlight-bg" src="{{ . }}" alt="" aria-hidden="true">{{ end }}
+<section class="cta" aria-label="Project highlight">
+  {{ with .image }}<img class="cta-bg" src="{{ . }}" alt="" aria-hidden="true">{{ end }}
   <div class="grid-columns" aria-hidden="true">
     <div class="grid-col"></div><div class="grid-col"></div><div class="grid-col"></div>
   </div>
-  <div class="container project-highlight-content">
-    <h2 class="project-highlight-title">{{ $.Params.highlight_section_title | default "Project Highlight" }}</h2>
-    <div class="project-card">
-      <div class="project-card-meta">
-        {{ with .name }}<strong>{{ . }}</strong><br>{{ end }}
+  <div class="container">
+    <h2 class="cta-title">{{ $.Params.highlight_section_title | default "Project Highlight" }}</h2>
+    <div class="cta-card cta-card--green">
+      <div class="cta-card-meta">
+        {{ with .name }}{{ . }}<br>{{ end }}
         {{ with .date }}{{ . }}<br>{{ end }}
         {{ with .place }}{{ . }}{{ end }}
       </div>
-      <p class="project-card-text">{{ .text }}</p>
-      {{ with .link }}<a href="{{ .url }}" class="btn btn--green">{{ .label }} →</a>{{ end }}
+      <p class="cta-card-text">{{ .text }}</p>
+      {{ with .link }}<a href="{{ .url }}" class="btn">{{ .label }} →</a>{{ end }}
     </div>
   </div>
 </section>

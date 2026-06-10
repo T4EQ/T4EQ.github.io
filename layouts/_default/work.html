@@ -1,0 +1,73 @@
+{{ define "main" }}
+
+{{/* ── HERO ── */}}
+<section class="page-hero" aria-label="Page header">
+  {{ with .Params.hero_image }}
+  <img class="page-hero-bg" src="{{ . }}" alt="" aria-hidden="true">
+  {{ end }}
+  <div class="grid-columns" aria-hidden="true">
+    <div class="grid-col"></div><div class="grid-col"></div><div class="grid-col"></div>
+  </div>
+  <div class="container">
+    <div class="hero-inner">
+      <h1 class="hero-title">{{ .Params.hero_title | default .Title }}</h1>
+      <p class="hero-sub">{{ .Params.hero_text | default .Site.Params.tagline }}</p>
+    </div>
+  </div>
+</section>
+
+{{/* ── OUR VALUES ── */}}
+<section class="section section--purple">
+  <div class="title-bar"><div class="container">
+    <h2 class="section-title">Our Values</h2>
+  </div></div>
+  <div class="container">
+    {{ with .Params.values_intro }}<p class="section-intro">{{ . }}</p>{{ end }}
+    <div class="card-grid">
+      {{ range .Params.values }}
+      <article class="card">
+        <h3 class="card-title">{{ .title }}</h3>
+        <p class="card-text">{{ .text }}</p>
+        {{ with .link }}<a href="{{ .url }}" class="btn">{{ .label }} →</a>{{ end }}
+      </article>
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+{{/* ── OUR MISSION AND VISION — green ── */}}
+<section class="section section--green">
+  <div class="title-bar"><div class="container">
+    <h2 class="section-title">Our Mission and Vision</h2>
+  </div></div>
+  <div class="container">
+    <div class="section-body">{{ .Params.mission | markdownify }}</div>
+  </div>
+</section>
+
+{{/* ── HOW DO WE WORK ── */}}
+<section class="section section--purple">
+  <div class="title-bar"><div class="container">
+    <h2 class="section-title">How do we work?</h2>
+  </div></div>
+  <div class="container">
+    <div class="section-body">{{ .Params.how_we_work | markdownify }}</div>
+  </div>
+</section>
+
+{{/* ── DISCOVER OUR TEAM — CTA ── */}}
+<section class="cta" aria-label="Discover our team">
+  {{ with .Params.team_cta_image }}<img class="cta-bg" src="{{ . }}" alt="" aria-hidden="true">{{ end }}
+  <div class="grid-columns" aria-hidden="true">
+    <div class="grid-col"></div><div class="grid-col"></div><div class="grid-col"></div>
+  </div>
+  <div class="container">
+    <h2 class="cta-title">Discover our Team</h2>
+    <div class="cta-card cta-card--purple">
+      <p class="cta-card-text">{{ .Params.team_cta_text }}</p>
+      <a href="/team/" class="btn">Meet the team →</a>
+    </div>
+  </div>
+</section>
+
+{{ end }}

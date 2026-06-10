@@ -10,30 +10,34 @@ theme = "t4eq"
 
 [menu]
   [[menu.main]]
-    name = "About"
-    url = "/about/"
+    name = "Home"
+    url = "/"
     weight = 1
   [[menu.main]]
-    name = "Our work"
-    url = "/projects/"
+    name = "Our Work"
+    url = "/work/"
     weight = 2
-  [[menu.main]]
-    name = "Team"
-    url = "/team/"
-    weight = 3
   [[menu.main]]
     name = "Partners"
     url = "/partners/"
-    weight = 4
+    weight = 3
   [[menu.main]]
-    name = "Contacts"
+    name = "Contact"
     url = "/contact/"
-    weight = 5
+    weight = 4
 
   [[menu.footer]]
     name = "Tech for Equality"
     url = "/"
     weight = 1
+  [[menu.footer]]
+    name = "Social Media"
+    url = "/contact/#connect"
+    weight = 2
+  [[menu.footer]]
+    name = "Contact"
+    url = "/contact/"
+    weight = 3
 
 [build]
   writeStats = true

@@ -1,68 +1,71 @@
 {{ define "main" }}
 
-{{/* ── INTRO — offwhite (no hero, matches Figma) ── */}}
-<section class="section section--offwhite projects-intro">
-  <div class="container">
+{{/* ── TITLE BAR + INTRO (no hero — matches Figma Projects page) ── */}}
+<section class="section section--purple">
+  <div class="title-bar"><div class="container">
     <h1 class="section-title">{{ .Title }}</h1>
-    {{ with .Params.intro }}<p class="section-intro" style="margin-top: var(--space-sm);">{{ . }}</p>{{ end }}
-  </div>
-</section>
-
-{{/* ── PROJECT ITEMS — alternating offwhite / purple-tint ── */}}
-{{ range $i, $p := .Params.projects }}
-<section class="section {{ if eq (mod $i 2) 0 }}section--white{{ else }}section--offwhite{{ end }} project-section">
-  <div class="container project-row">
-    <div class="project-row-info">
-      {{ with $p.community }}<span class="project-tag">{{ . }}</span>{{ end }}
-      <h2 class="project-name">{{ $p.name }}</h2>
-      {{ with $p.subtitle }}<p class="project-subtitle">{{ . }}</p>{{ end }}
-      <p class="project-description">{{ $p.description }}</p>
-      {{ with $p.link }}
-      <a href="{{ .url }}" class="btn btn--purple">{{ .label }} →</a>
-      {{ end }}
-    </div>
-    <div class="project-row-media">
-      {{ if $p.image }}
-      <img src="{{ $p.image }}" alt="{{ $p.name }}">
-      {{ else }}
-      <div class="project-placeholder"></div>
-      {{ end }}
-    </div>
-  </div>
-</section>
-{{ end }}
-
-{{ range $i, $page := .Pages }}
-<section class="section {{ if eq (mod $i 2) 0 }}section--white{{ else }}section--offwhite{{ end }} project-section">
-  <div class="container project-row">
-    <div class="project-row-info">
-      <h2 class="project-name">{{ $page.Title }}</h2>
-      {{ with $page.Params.subtitle }}<p class="project-subtitle">{{ . }}</p>{{ end }}
-      <p class="project-description">{{ $page.Description | default $page.Summary }}</p>
-      <a href="{{ $page.Permalink }}" class="btn btn--purple">Read more →</a>
-    </div>
-    <div class="project-row-media">
-      {{ with $page.Params.image }}
-      <img src="{{ . }}" alt="{{ $page.Title }}">
-      {{ else }}
-      <div class="project-placeholder"></div>
-      {{ end }}
-    </div>
-  </div>
-</section>
-{{ end }}
-
-{{/* ── WORK WITH US — purple CTA ── */}}
-<section class="section section--purple cta-section">
+  </div></div>
   <div class="container">
-    <div class="hero-inner">
-      <div>
-        <h2 class="section-title">Work with us</h2>
-        <p class="section-intro" style="margin-top: var(--space-sm);">Have a project or challenge in mind? We'd love to hear from you.</p>
+    {{ with .Params.intro }}<p class="section-intro">{{ . }}</p>{{ end }}
+
+    {{/* ── PROJECT CARDS — outlined, detailed ── */}}
+    {{ range .Params.projects }}
+    <article class="project-card">
+      <div class="project-card-head">
+        <div>
+          <h2 class="project-name">{{ .name }}</h2>
+          {{ with .subtitle }}<p class="project-subtitle">{{ . }}</p>{{ end }}
+          <p class="project-meta">
+            {{ with .community }}Community partner<br><strong>{{ . }}</strong><br><br>{{ end }}
+            {{ with .year }}YEAR<br><strong>{{ . }}</strong>{{ end }}
+          </p>
+        </div>
+        <div class="project-media">
+          {{ if .image }}<img src="{{ .image }}" alt="{{ .name }}">{{ end }}
+        </div>
       </div>
-      <div style="display:flex; align-items:center;">
-        <a href="/contact/" class="btn btn--green">Get in touch →</a>
+      {{ if or .description .details }}
+      <div class="project-detail">
+        {{ with .description }}<p>{{ . }}</p>{{ end }}
+        {{ with .details }}<p>{{ . }}</p>{{ end }}
       </div>
+      {{ end }}
+    </article>
+    {{ end }}
+  </div>
+</section>
+
+{{/* ── OUR SERVICES — green ── */}}
+{{ if .Params.services }}
+<section class="section section--green">
+  <div class="title-bar"><div class="container">
+    <h2 class="section-title">Our Services</h2>
+  </div></div>
+  <div class="container">
+    {{ with .Params.services_intro }}<p class="section-intro">{{ . }}</p>{{ end }}
+    <div class="card-grid">
+      {{ range .Params.services }}
+      <article class="card">
+        <h3 class="card-title">{{ .title }}</h3>
+        <p class="card-text">{{ .text }}</p>
+      </article>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}
+
+{{/* ── SHARE YOUR CHALLENGE — CTA ── */}}
+<section class="cta" aria-label="Share your challenge">
+  {{ with .Params.cta_image }}<img class="cta-bg" src="{{ . }}" alt="" aria-hidden="true">{{ end }}
+  <div class="grid-columns" aria-hidden="true">
+    <div class="grid-col"></div><div class="grid-col"></div><div class="grid-col"></div>
+  </div>
+  <div class="container">
+    <h2 class="cta-title">Share your challenge</h2>
+    <div class="cta-card cta-card--purple">
+      <p class="cta-card-text">{{ .Params.cta_text | default "Have a challenge technology could help solve? Tell us about it." }}</p>
+      <a href="/contact/" class="btn">Get in touch →</a>
     </div>
   </div>
 </section>

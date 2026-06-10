@@ -1,0 +1,72 @@
+{{ define "main" }}
+
+{{/* ── HERO — "Work with us!" ── */}}
+<section class="page-hero" aria-label="Page header">
+  {{ with .Params.hero_image }}
+  <img class="page-hero-bg" src="{{ . }}" alt="" aria-hidden="true">
+  {{ end }}
+  <div class="grid-columns" aria-hidden="true">
+    <div class="grid-col"></div><div class="grid-col"></div><div class="grid-col"></div>
+  </div>
+  <div class="container">
+    <div class="hero-inner">
+      <h1 class="hero-title">{{ .Params.hero_title | default .Title }}</h1>
+      {{ with .Params.hero_text }}<p class="hero-sub">{{ . }}</p>{{ end }}
+    </div>
+  </div>
+</section>
+
+{{/* ── SUPPORT US — purple ── */}}
+<section class="section section--purple">
+  <div class="title-bar"><div class="container">
+    <h2 class="section-title">Support us</h2>
+  </div></div>
+  <div class="container">
+    <div class="section-body">{{ .Params.support_text | markdownify }}</div>
+  </div>
+</section>
+
+{{/* ── OUR PARTNERS — green ── */}}
+<section class="section section--green">
+  <div class="title-bar"><div class="container">
+    <h2 class="section-title">Our Partners</h2>
+  </div></div>
+  <div class="container">
+    {{ with .Params.partners_intro }}<p class="section-intro">{{ . }}</p>{{ end }}
+    <div class="partner-grid">
+      {{ range .Params.partners }}
+      <article class="partner-card">
+        <div class="partner-photo">
+          {{ with .image }}<img src="{{ . }}" alt="{{ $.Title }}" loading="lazy">{{ end }}
+        </div>
+        <p class="partner-name">{{ .name }}</p>
+        <p class="partner-text">{{ .text }}</p>
+      </article>
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+{{/* ── PROJECT HIGHLIGHT — CTA ── */}}
+{{ with .Params.highlight }}
+<section class="cta" aria-label="Project highlight">
+  {{ with .image }}<img class="cta-bg" src="{{ . }}" alt="" aria-hidden="true">{{ end }}
+  <div class="grid-columns" aria-hidden="true">
+    <div class="grid-col"></div><div class="grid-col"></div><div class="grid-col"></div>
+  </div>
+  <div class="container">
+    <h2 class="cta-title">Project Highlight</h2>
+    <div class="cta-card cta-card--green">
+      <div class="cta-card-meta">
+        {{ with .name }}{{ . }}<br>{{ end }}
+        {{ with .date }}{{ . }}<br>{{ end }}
+        {{ with .place }}{{ . }}{{ end }}
+      </div>
+      <p class="cta-card-text">{{ .text }}</p>
+      {{ with .link }}<a href="{{ .url }}" class="btn">{{ .label }} →</a>{{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}
+
+{{ end }}

@@ -1,53 +1,35 @@
 {{ define "main" }}
 
-{{/* ── HERO ── */}}
+{{/* ── HERO — team photo bg ── */}}
 <section class="page-hero" aria-label="Page header">
+  {{ with .Params.hero_image }}
+  <img class="page-hero-bg" src="{{ . }}" alt="" aria-hidden="true">
+  {{ end }}
   <div class="grid-columns" aria-hidden="true">
     <div class="grid-col"></div><div class="grid-col"></div><div class="grid-col"></div>
   </div>
   <div class="container">
-    {{ if .Params.hero_text }}
     <div class="hero-inner">
       <h1 class="hero-title">{{ .Params.hero_title | default .Title }}</h1>
-      <p class="hero-sub">{{ .Params.hero_text }}</p>
+      {{ with .Params.hero_text }}<p class="hero-sub">{{ . }}</p>{{ end }}
     </div>
-    {{ else }}
-    <div class="hero-inner hero-inner--single">
-      <h1 class="hero-title">{{ .Params.hero_title | default .Title }}</h1>
-    </div>
-    {{ end }}
   </div>
 </section>
 
-{{/* ── ABOUT THE TEAM — purple ── */}}
-{{ range $i, $s := .Params.sections }}
-<section class="section {{ if eq (mod $i 2) 0 }}section--purple{{ else }}section--offwhite{{ end }}">
+{{/* ── TEAM GRID — purple ── */}}
+<section class="section section--purple" style="padding-top: var(--space-lg);">
   <div class="container">
-    {{ with $s.title }}
-    <div class="section-header">
-      <h2 class="section-title">{{ . }}</h2>
-    </div>
-    {{ end }}
-    {{ with $s.text }}
-    <div class="section-body">{{ . | markdownify }}</div>
-    {{ end }}
-  </div>
-</section>
-{{ end }}
-
-{{/* ── TEAM GRID — offwhite ── */}}
-<section class="section section--offwhite">
-  <div class="container">
+    {{ with .Params.intro }}<p class="section-intro">{{ . }}</p>{{ end }}
     <div class="team-grid">
       {{ $members := slice
-        (dict "slug" "ppadmanabhan"   "ext" "jpg"  "name" "Preethi Padmanabhan"      "role" "Founder · System/Electrical Engineer")
-        (dict "slug" "jalvarez"       "ext" "jpg"  "name" "Javier Alvarez"            "role" "Founding Member · Embedded Software Engineer")
-        (dict "slug" "adichele"       "ext" "jpeg" "name" "Andrea Di Chele"           "role" "Founding Member · Mechanical/System Engineer")
-        (dict "slug" "jfrohnhofen"    "ext" "jpeg" "name" "Johannes Frohnhofen"       "role" "Founding Member · Software Engineer")
-        (dict "slug" "rchithambaram"  "ext" "jpeg" "name" "Ranjini Chithambaram"      "role" "Founding Member · Software Engineer")
-        (dict "slug" "apiotto"        "ext" "jpg"  "name" "Alessandro Piotto"         "role" "Founding Member · Optical/System Engineer")
-        (dict "slug" "naveen"         "ext" ""     "name" "Naveen Shanmugasundaram"   "role" "Founding Member · Security Engineer")
-        (dict "slug" "tvideva"        "ext" "jpeg" "name" "Tereza Videva"             "role" "Founding Member · System Engineer")
+        (dict "slug" "ppadmanabhan"   "ext" "jpg"  "name" "Preethi Padmanabhan"     "role" "Founder · System/Electrical Engineer")
+        (dict "slug" "jalvarez"       "ext" "jpg"  "name" "Javier Alvarez"           "role" "Founding Member · Embedded Software Engineer")
+        (dict "slug" "adichele"       "ext" "jpeg" "name" "Andrea Di Chele"          "role" "Founding Member · Mechanical/System Engineer")
+        (dict "slug" "jfrohnhofen"    "ext" "jpeg" "name" "Johannes Frohnhofen"      "role" "Founding Member · Software Engineer")
+        (dict "slug" "rchithambaram"  "ext" "jpeg" "name" "Ranjini Chithambaram"     "role" "Founding Member · Software Engineer")
+        (dict "slug" "apiotto"        "ext" "jpg"  "name" "Alessandro Piotto"        "role" "Founding Member · Optical/System Engineer")
+        (dict "slug" "naveen"         "ext" ""     "name" "Naveen Shanmugasundaram"  "role" "Founding Member · Security Engineer")
+        (dict "slug" "tvideva"        "ext" "jpeg" "name" "Tereza Videva"            "role" "Founding Member · System Engineer")
       }}
       {{ range $members }}
       <article class="team-card">
@@ -60,6 +42,21 @@
         <p class="team-role">{{ .role }}</p>
       </article>
       {{ end }}
+    </div>
+  </div>
+</section>
+
+{{/* ── WORK WITH US — CTA ── */}}
+<section class="cta" aria-label="Work with us">
+  {{ with .Params.cta_image }}<img class="cta-bg" src="{{ . }}" alt="" aria-hidden="true">{{ end }}
+  <div class="grid-columns" aria-hidden="true">
+    <div class="grid-col"></div><div class="grid-col"></div><div class="grid-col"></div>
+  </div>
+  <div class="container">
+    <h2 class="cta-title">Work with us!</h2>
+    <div class="cta-card cta-card--green">
+      <p class="cta-card-text">{{ .Params.cta_text | default "Want to join the team or collaborate with us? We'd love to hear from you." }}</p>
+      <a href="/contact/" class="btn">Get in touch →</a>
     </div>
   </div>
 </section>
