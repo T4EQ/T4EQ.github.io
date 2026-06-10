@@ -130,11 +130,16 @@ body {
   padding: var(--space-xl) 0;
 }
 
-/* Home hero: taller, vertically centred */
+/* Home hero: fills viewport (Figma: 1480×1028 frame), vertically centred */
 .page-hero--home {
-  min-height: 90vh;
+  min-height: calc(100vh - var(--nav-height));
   display: flex;
   align-items: center;
+}
+
+/* Figma: 120px gap between logo and tagline columns */
+.page-hero--home .hero-inner {
+  gap: clamp(3rem, 8vw, 7.5rem);
 }
 
 .page-hero-bg {
@@ -174,9 +179,10 @@ body {
   max-width: 680px;
 }
 
-/* Logo image used as the hero title on the homepage */
+/* Logo image used as the hero title on the homepage
+   Figma: 637.66px on a 1480px canvas → 43% of container width */
 .hero-logo-img {
-  width: min(440px, 90%);
+  width: min(490px, 100%);
   height: auto;
   display: block;
 }
@@ -195,11 +201,13 @@ body {
   font-size: clamp(2.8rem, 7vw, 5rem);
 }
 
+/* Figma: Inter Regular 36px / 120% on 1480px canvas */
 .hero-sub {
   font-family: var(--font-sans);
-  font-size: clamp(0.95rem, 1.8vw, 1.15rem);
-  color: rgba(245,245,244,0.85);
-  line-height: 1.7;
+  font-size: clamp(1.15rem, 2.4vw, 1.75rem);
+  font-weight: 400;
+  color: var(--offwhite);
+  line-height: 1.2;
 }
 
 /* ════════════════════════════════════════════════
