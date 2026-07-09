@@ -1,62 +1,39 @@
 {{ define "main" }}
 
-{{/* ── HERO — purple, standard ── */}}
-<section class="page-hero" aria-label="Page header">
-  {{ with .Params.hero_image }}
-  <img class="page-hero-bg" src="{{ . }}" alt="" aria-hidden="true">
-  {{ end }}
-  <div class="grid-columns" aria-hidden="true">
-    <div class="grid-col"></div><div class="grid-col"></div><div class="grid-col"></div>
-  </div>
-  <div class="container">
-    {{ if .Params.hero_text }}
-    <div class="hero-inner">
-      <h1 class="hero-title">{{ .Params.hero_title | default .Title }}</h1>
-      <p class="hero-sub">{{ .Params.hero_text }}</p>
-    </div>
-    {{ else }}
-    <div class="hero-inner hero-inner--single">
-      <h1 class="hero-title">{{ .Params.hero_title | default .Title }}</h1>
-    </div>
-    {{ end }}
-  </div>
-</section>
+{{ partial "components/hero.html" (dict
+  "page" .
+  "image" .Params.hero_image
+  "title" (.Params.hero_title | default .Title)
+  "text" .Params.hero_text
+) }}
 
-{{/* ── FRONT-MATTER SECTIONS — alternating offwhite / purple ── */}}
+{{/* ── FRONT-MATTER SECTIONS — alternating purple / green ── */}}
 {{ range $i, $s := .Params.sections }}
-<section class="section {{ if eq (mod $i 2) 0 }}section--offwhite{{ else }}section--purple{{ end }}">
-  <div class="container">
-    {{ with $s.title }}
-    <div class="section-header">
-      <h2 class="section-title">{{ . }}</h2>
-      {{ with $s.intro }}<p class="section-intro">{{ . }}</p>{{ end }}
-    </div>
-    {{ end }}
-    {{ with $s.text }}
-    <div class="section-body">{{ . | markdownify }}</div>
-    {{ end }}
-    {{ if $s.cards }}
-    <div class="card-grid">
-      {{ range $s.cards }}
-      <article class="card">
-        <h3 class="card-title">{{ .title }}</h3>
-        <p class="card-text">{{ .text }}</p>
-        {{ with .link }}<a href="{{ .url }}" class="btn">{{ .label }} →</a>{{ end }}
-      </article>
-      {{ end }}
-    </div>
-    {{ end }}
-  </div>
-</section>
+{{ $bg := cond (eq (mod $i 2) 0) "c-band--purple" "c-band--green" }}
+{{ if $s.cards }}
+{{ partial "components/card-grid.html" (dict
+  "background" $bg
+  "title" $s.title
+  "intro" $s.intro
+  "cards" $s.cards
+) }}
+{{ else }}
+{{ partial "components/prose.html" (dict
+  "background" $bg
+  "title" $s.title
+  "intro" $s.intro
+  "body" $s.text
+) }}
+{{ end }}
 {{ end }}
 
-{{/* ── MARKDOWN BODY — offwhite (stub pages: About, Contact, Partners) ── */}}
+{{/* ── MARKDOWN BODY — stub pages ── */}}
 {{ if .Content }}
-<section class="section section--offwhite">
-  <div class="container">
-    <div class="section-body">{{ .Content }}</div>
-  </div>
-</section>
+{{ partial "components/prose.html" (dict
+  "background" "c-band--purple"
+  "body" .Content
+  "bodyIsHtml" true
+) }}
 {{ end }}
 
 {{ end }}

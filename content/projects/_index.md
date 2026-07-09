@@ -18,14 +18,8 @@ projects:
     description: "Many rural classrooms lack reliable electricity, limiting when and how students can learn. This project equips classrooms with solar panels, charge controllers, batteries and LED lighting — bringing dependable light to classrooms inside and outside."
     image: "/images/project-solar.png"
 
-services_intro: "How we can help your organisation."
-services:
-  - title: "Service 1"
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis."
-  - title: "Service 2"
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis."
-  - title: "Service 3"
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis."
+services_title: "Our Services"
+services_intro: "We are committed to addressing societal challenges aligned with the UN Sustainable Development Goals (SDGs). To turn this commitment into tangible impact, we leverage a multidisciplinary skillset spanning embedded and software engineering, security engineering, and hardware development (electrical, mechanical, and optical), bridging complex engineering and community-led change through our core services."
 
 cta_text: "Have a challenge technology could help solve? Tell us about it."
 cta_image: "/images/cta-challenge.jpg"

@@ -1,0 +1,16 @@
+- title: "Context-Driven Design"
+  text: "Working with local partners to translate community needs into technical solutions that respect real-world constraints."
+  link:
+    url: "/partners/"
+    label: "Discover our Partners"
+- title: "Engineering to Field"
+  text: "Handling the full journey from feasibility and rapid prototyping to delivering solutions built for local constraints. Crucially, we focus on training and empowering local field teams so they have the knowledge and independence to take full ownership long-term. 
+"
+  link:
+    url: "/projects/"
+    label: "Explore our Projects"
+- title: "Open-Source Solutions"
+  text: "Building transparent, adaptable frameworks that ensure technical knowledge remains a shared, public resource."
+  link:
+    url: "/projects/"
+    label: "View open Frameworks"

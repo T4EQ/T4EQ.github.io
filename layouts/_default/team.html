@@ -1,64 +1,25 @@
 {{ define "main" }}
 
-{{/* ── HERO — team photo bg ── */}}
-<section class="page-hero" aria-label="Page header">
-  {{ with .Params.hero_image }}
-  <img class="page-hero-bg" src="{{ . }}" alt="" aria-hidden="true">
-  {{ end }}
-  <div class="grid-columns" aria-hidden="true">
-    <div class="grid-col"></div><div class="grid-col"></div><div class="grid-col"></div>
-  </div>
-  <div class="container">
-    <div class="hero-inner">
-      <h1 class="hero-title">{{ .Params.hero_title | default .Title }}</h1>
-      {{ with .Params.hero_text }}<p class="hero-sub">{{ . }}</p>{{ end }}
-    </div>
-  </div>
-</section>
+{{ partial "components/hero.html" (dict
+  "page" .
+  "image" .Params.hero_image
+  "title" (.Params.hero_title | default .Title)
+  "text" .Params.hero_text
+) }}
 
-{{/* ── TEAM GRID — purple ── */}}
-<section class="section section--purple" style="padding-top: var(--space-lg);">
-  <div class="container">
-    {{ with .Params.intro }}<p class="section-intro">{{ . }}</p>{{ end }}
-    <div class="team-grid">
-      {{ $members := slice
-        (dict "slug" "ppadmanabhan"   "ext" "jpg"  "name" "Preethi Padmanabhan"     "role" "Founder · System/Electrical Engineer")
-        (dict "slug" "jalvarez"       "ext" "jpg"  "name" "Javier Alvarez"           "role" "Founding Member · Embedded Software Engineer")
-        (dict "slug" "adichele"       "ext" "jpeg" "name" "Andrea Di Chele"          "role" "Founding Member · Mechanical/System Engineer")
-        (dict "slug" "jfrohnhofen"    "ext" "jpeg" "name" "Johannes Frohnhofen"      "role" "Founding Member · Software Engineer")
-        (dict "slug" "rchithambaram"  "ext" "jpeg" "name" "Ranjini Chithambaram"     "role" "Founding Member · Software Engineer")
-        (dict "slug" "apiotto"        "ext" "jpg"  "name" "Alessandro Piotto"        "role" "Founding Member · Optical/System Engineer")
-        (dict "slug" "naveen"         "ext" ""     "name" "Naveen Shanmugasundaram"  "role" "Founding Member · Security Engineer")
-        (dict "slug" "tvideva"        "ext" "jpeg" "name" "Tereza Videva"            "role" "Founding Member · System Engineer")
-      }}
-      {{ range $members }}
-      <article class="team-card">
-        <div class="team-photo">
-          {{ if .ext }}
-          <img src="/images/team/{{ .slug }}.{{ .ext }}" alt="{{ .name }}" loading="lazy">
-          {{ end }}
-        </div>
-        <p class="team-name">{{ .name }}</p>
-        <p class="team-role">{{ .role }}</p>
-      </article>
-      {{ end }}
-    </div>
-  </div>
-</section>
+{{ partial "components/people-grid.html" (dict
+  "background" "c-band--purple"
+  "intro" .Params.intro
+  "people" hugo.Data.team
+) }}
 
-{{/* ── WORK WITH US — CTA ── */}}
-<section class="cta" aria-label="Work with us">
-  {{ with .Params.cta_image }}<img class="cta-bg" src="{{ . }}" alt="" aria-hidden="true">{{ end }}
-  <div class="grid-columns" aria-hidden="true">
-    <div class="grid-col"></div><div class="grid-col"></div><div class="grid-col"></div>
-  </div>
-  <div class="container">
-    <h2 class="cta-title">Work with us!</h2>
-    <div class="cta-card cta-card--green">
-      <p class="cta-card-text">{{ .Params.cta_text | default "Want to join the team or collaborate with us? We'd love to hear from you." }}</p>
-      <a href="/contact/" class="btn">Get in touch →</a>
-    </div>
-  </div>
-</section>
+{{ partial "components/cta.html" (dict
+  "title" "Work with us!"
+  "ariaLabel" "Work with us"
+  "image" .Params.cta_image
+  "cardColor" "green"
+  "text" (.Params.cta_text | default "Want to join the team or collaborate with us? We'd love to hear from you.")
+  "button" (dict "url" "/contact/" "label" "Get in touch")
+) }}
 
 {{ end }}

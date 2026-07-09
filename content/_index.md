@@ -3,54 +3,30 @@ title: "T4EQ — Tech for Equality"
 hero_image: "/images/hero-home.jpg"
 tagline: "We envision a world where technology bridges inequality and gives every individual the tools to live with dignity and opportunity."
 
-values_title: "Our Values"
-values_intro: "Everything we do is rooted in three core beliefs about how technology can serve humanity."
+mission_vision_title: "Our Mission and Vision"
+mission_vision_intro: "T4EQ is a Swiss-based technology non-profit organization of like-minded individuals committed to tackling societal challenges aligned with the UN's sustainable development goals (SDGs)."
+mission_vision:
+  - title: "Mission"
+    text: "Our mission is to co-develop solutions with communities and groups whose needs remain unmet due to a lack of access to technology. By keeping our development completely open-source, we ensure this technology remains free and accessible for the wider community to adopt, scale, and benefit from."
+  - title: "Vision"
+    text: "In the long term, we aim to create an open and structured platform that connects stakeholders with different objectives around a common social impact initiative."
 
-values:
-  - title: "Equality"
-    text: "We believe access to technology is a human right. Every individual deserves the tools to participate fully in society, regardless of geography, income, or background."
-    link:
-      url: "/projects/"
-      label: "Our projects"
-  - title: "Transparency"
-    text: "We operate openly — sharing our methods, results, and lessons. Trust is built through honest communication with communities, partners, and donors."
-    link:
-      url: "/projects/"
-      label: "Our projects"
-  - title: "Empowerment"
-    text: "We don't deliver solutions, we build capacity. Communities lead their own development; we provide the technical backbone to make it possible."
-    link:
-      url: "/projects/"
-      label: "Our projects"
+services_title: "Our Services"
+services_intro: "We are committed to addressing societal challenges aligned with the UN Sustainable Development Goals (SDGs). To turn this commitment into tangible impact, we leverage a multidisciplinary skillset spanning embedded and software engineering, security engineering, and hardware development (electrical, mechanical, and optical)– all complemented by visual identity and branding expertise. This diverse technical and creative foundation allows us to bridge the gap between complex engineering and community-led change through our core services."
 
-expertise_title: "Our Expertise"
-expertise_intro: "We bring together engineering, community development, and systems thinking to tackle the world's most pressing digital divides."
-
-expertise:
-  - title: "Engineering"
-    text: "From low-bandwidth educational tools to solar-powered infrastructure, our team designs for real-world constraints — not ideal conditions."
-    link:
-      url: "/projects/"
-      label: "Our projects"
-  - title: "Partnerships"
-    text: "We work alongside local NGOs, governments, and communities who understand the needs on the ground. Technology is never the whole answer."
-    link:
-      url: "/projects/"
-      label: "Our projects"
-  - title: "SDG Alignment"
-    text: "All our work maps directly to the UN Sustainable Development Goals, with an initial focus on SDG #4: Quality Education."
-    link:
-      url: "/projects/"
-      label: "Our projects"
 
 highlight_section_title: "Project Highlight"
 highlight:
-  name: "LEAP"
-  date: "2024 — ongoing"
-  place: "Rural India"
+  name: "LEAP — Low-bandwidth Educational Access Platform"
+  date: "2025"
+  place: "Tamil Nadu, India"
   image: "/images/project-highlight.jpg"
-  text: "The Low-bandwidth Educational Access Project brings offline-first digital learning tools to schools in remote areas with limited or no internet connectivity."
+  text: "An engineering solution designed to reliably deliver high-quality educational video content to students in rural Indian villages, successfully bypassing the constraints of absent, intermittent, or low-bandwidth internet."
   link:
     url: "/projects/"
-    label: "Our projects"
+    label: "Discover more"
+  article:
+    url: "https://www.raspberrypi.com/news/leap-low-bandwidth-educational-access-platform/"
+    label: "Read the article"
 ---
+

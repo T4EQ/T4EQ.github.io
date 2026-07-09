@@ -1,0 +1,32 @@
+{{- /* Project list band. Params: background, title, level, intro,
+       projects (slice of {name,subtitle,community,year,description,details,image,link}) */ -}}
+<section class="c-band c-band--projects {{ .background | default "c-band--purple" }}"{{ with .id }} id="{{ . }}"{{ end }}>
+  {{ partial "components/_band-header.html" (dict "title" .title "level" .level) }}
+  <div class="container">
+    {{ with .intro }}<p class="c-band__intro">{{ . }}</p>{{ end }}
+    {{ range .projects }}
+    <article class="c-project">
+      <div class="c-project__head">
+        <div>
+          <h2 class="c-project__name">{{ .name }}</h2>
+          {{ with .subtitle }}<p class="c-project__subtitle">{{ . }}</p>{{ end }}
+          <p class="c-project__meta">
+            {{ with .community }}Community partner<br><strong>{{ . }}</strong><br><br>{{ end }}
+            {{ with .year }}YEAR<br><strong>{{ . }}</strong>{{ end }}
+          </p>
+          {{ with .link }}{{ partial "components/button.html" (dict "url" .url "label" .label) }}{{ end }}
+        </div>
+        <div class="c-project__media">
+          {{ if .image }}<img src="{{ .image }}" alt="{{ .name }}">{{ end }}
+        </div>
+      </div>
+      {{ if or .description .details }}
+      <div class="c-project__detail">
+        {{ with .description }}<p>{{ . }}</p>{{ end }}
+        {{ with .details }}<p>{{ . }}</p>{{ end }}
+      </div>
+      {{ end }}
+    </article>
+    {{ end }}
+  </div>
+</section>

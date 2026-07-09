@@ -1,73 +1,29 @@
 {{ define "main" }}
 
-{{/* ── TITLE BAR + INTRO (no hero — matches Figma Projects page) ── */}}
-<section class="section section--purple">
-  <div class="title-bar"><div class="container">
-    <h1 class="section-title">{{ .Title }}</h1>
-  </div></div>
-  <div class="container">
-    {{ with .Params.intro }}<p class="section-intro">{{ . }}</p>{{ end }}
+{{ partial "components/project-list.html" (dict
+  "background" "c-band--purple"
+  "title" .Title
+  "level" "h1"
+  "intro" .Params.intro
+  "projects" .Params.projects
+) }}
 
-    {{/* ── PROJECT CARDS — outlined, detailed ── */}}
-    {{ range .Params.projects }}
-    <article class="project-card">
-      <div class="project-card-head">
-        <div>
-          <h2 class="project-name">{{ .name }}</h2>
-          {{ with .subtitle }}<p class="project-subtitle">{{ . }}</p>{{ end }}
-          <p class="project-meta">
-            {{ with .community }}Community partner<br><strong>{{ . }}</strong><br><br>{{ end }}
-            {{ with .year }}YEAR<br><strong>{{ . }}</strong>{{ end }}
-          </p>
-        </div>
-        <div class="project-media">
-          {{ if .image }}<img src="{{ .image }}" alt="{{ .name }}">{{ end }}
-        </div>
-      </div>
-      {{ if or .description .details }}
-      <div class="project-detail">
-        {{ with .description }}<p>{{ . }}</p>{{ end }}
-        {{ with .details }}<p>{{ . }}</p>{{ end }}
-      </div>
-      {{ end }}
-    </article>
-    {{ end }}
-  </div>
-</section>
+{{ partial "components/card-grid.html" (dict
+  "background" "c-band--green"
+  "title" (.Params.services_title | default "Our Services")
+  "intro" .Params.services_intro
+  "columns" 3
+  "icons" true
+  "cards" hugo.Data.services
+) }}
 
-{{/* ── OUR SERVICES — green ── */}}
-{{ if .Params.services }}
-<section class="section section--green">
-  <div class="title-bar"><div class="container">
-    <h2 class="section-title">Our Services</h2>
-  </div></div>
-  <div class="container">
-    {{ with .Params.services_intro }}<p class="section-intro">{{ . }}</p>{{ end }}
-    <div class="card-grid">
-      {{ range .Params.services }}
-      <article class="card">
-        <h3 class="card-title">{{ .title }}</h3>
-        <p class="card-text">{{ .text }}</p>
-      </article>
-      {{ end }}
-    </div>
-  </div>
-</section>
-{{ end }}
-
-{{/* ── SHARE YOUR CHALLENGE — CTA ── */}}
-<section class="cta" aria-label="Share your challenge">
-  {{ with .Params.cta_image }}<img class="cta-bg" src="{{ . }}" alt="" aria-hidden="true">{{ end }}
-  <div class="grid-columns" aria-hidden="true">
-    <div class="grid-col"></div><div class="grid-col"></div><div class="grid-col"></div>
-  </div>
-  <div class="container">
-    <h2 class="cta-title">Share your challenge</h2>
-    <div class="cta-card cta-card--purple">
-      <p class="cta-card-text">{{ .Params.cta_text | default "Have a challenge technology could help solve? Tell us about it." }}</p>
-      <a href="/contact/" class="btn">Get in touch →</a>
-    </div>
-  </div>
-</section>
+{{ partial "components/cta.html" (dict
+  "title" "Share your challenge"
+  "ariaLabel" "Share your challenge"
+  "image" .Params.cta_image
+  "cardColor" "purple"
+  "text" (.Params.cta_text | default "Have a challenge technology could help solve? Tell us about it.")
+  "button" (dict "url" "/contact/" "label" "Get in touch")
+) }}
 
 {{ end }}

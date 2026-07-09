@@ -1,5 +1,5 @@
 baseURL = "https://t4eq.github.io/"
-languageCode = "en-us"
+languageCode = "en-US"
 title = "T4EQ — Tech for Equality"
 theme = "t4eq"
 
@@ -14,17 +14,25 @@ theme = "t4eq"
     url = "/"
     weight = 1
   [[menu.main]]
-    name = "Our Work"
-    url = "/work/"
+    name = "About"
+    url = "/about/"
     weight = 2
+  [[menu.main]]
+    name = "Projects"
+    url = "/projects/"
+    weight = 3
+  [[menu.main]]
+    name = "Team"
+    url = "/team/"
+    weight = 4
   [[menu.main]]
     name = "Partners"
     url = "/partners/"
-    weight = 3
+    weight = 5
   [[menu.main]]
     name = "Contact"
     url = "/contact/"
-    weight = 4
+    weight = 6
 
   [[menu.footer]]
     name = "Tech for Equality"

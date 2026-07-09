@@ -1,0 +1,26 @@
+{{- /* Project highlight band: band-style section (title bar + content),
+       set over a full-bleed background image instead of a solid colour.
+       Params: title, level, ariaLabel, image, name, meta (slice of lines),
+               text, button (dict url/label), article (dict url/label -> external link) */ -}}
+<section class="c-band c-band--image" aria-label="{{ .ariaLabel | default .title }}">
+  {{ with .image }}<img class="c-band__bg" src="{{ . }}" alt="" aria-hidden="true">{{ end }}
+  <div class="c-gridlines" aria-hidden="true">
+    <div class="c-gridlines__col"></div><div class="c-gridlines__col"></div><div class="c-gridlines__col"></div>
+  </div>
+  {{ partial "components/_band-header.html" (dict "title" .title "level" .level) }}
+  <div class="container">
+    <div class="c-highlight">
+      <div class="c-highlight__bubble">
+        {{ with .name }}<h3 class="c-highlight__name">{{ . }}</h3>{{ end }}
+        {{ with .meta }}<p class="c-highlight__meta">{{ range . }}{{ . }}<br>{{ end }}</p>{{ end }}
+        {{ with .text }}<p class="c-highlight__text">{{ . }}</p>{{ end }}
+        {{ if or .button .article }}
+        <div class="c-highlight__actions">
+          {{ with .button }}{{ partial "components/button.html" (dict "url" .url "label" .label) }}{{ end }}
+          {{ with .article }}<a class="c-highlight__link" href="{{ .url }}" target="_blank" rel="noopener">{{ .label | default "Read the article" }} <span aria-hidden="true">↗</span></a>{{ end }}
+        </div>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</section>
