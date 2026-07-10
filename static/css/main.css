@@ -21,7 +21,7 @@
 
   /* Type scale — Roboto Mono 500 (headings) · Inter 400 (text) */
   --fs-h1:    6rem;    /* 96px · hero display  · lh 1.0 · ls -2% */
-  --fs-h2:    4rem;    /* 64px · section title · lh 1.0 · ls -2% */
+  --fs-h2:    3rem;    /* 48px · section title · lh 1.0 · ls -2% */
   --fs-h3:    2.5rem;  /* 40px · sub-heading   · lh 1.1 · ls -2% */
   --fs-h4:    1.75rem; /* 28px · card / label  · lh 1.2 · ls -1% */
   --fs-lead:  1.75rem; /* 28px · lead / t1 · lh 1.2 (Inter) */
@@ -167,7 +167,7 @@ body {
 
 .site-footer {
   background: var(--purple);
-  padding: var(--space-md) 0;
+  padding: var(--space-sm) 0;
 }
 
 .site-footer .container {
