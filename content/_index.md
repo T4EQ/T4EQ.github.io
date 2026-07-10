@@ -27,6 +27,6 @@ highlight:
     label: "Discover more"
   article:
     url: "https://www.raspberrypi.com/news/leap-low-bandwidth-educational-access-platform/"
-    label: "Read the article"
+    label: "Featured on Raspberry Pi"
 ---
 

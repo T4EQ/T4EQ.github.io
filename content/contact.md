@@ -8,7 +8,11 @@ linkedin: "https://www.linkedin.com/company/t4eq"
 facebook: "https://www.facebook.com/t4eq"
 instagram: "https://www.instagram.com/t4eq"
 
-# To make the form work, create a free form at https://formspree.io
-# and put the endpoint here, e.g. https://formspree.io/f/abcdwxyz
+# Where contact messages are sent.
+# To send messages straight to your inbox with no page reload, create a free
+# endpoint at https://formspree.io (or https://web3forms.com) and paste it below,
+# e.g. https://formspree.io/f/abcdwxyz
+# Until an endpoint is set, the form opens the visitor's email app addressed to contact_email.
 form_action: "#"
+contact_email: "info@t4eq.com"
 ---
