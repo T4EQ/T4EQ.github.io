@@ -1,5 +1,5 @@
 baseURL = "https://t4eq.github.io/"
-languageCode = "en-US"
+locale = "en-US"
 title = "T4EQ — Tech for Equality"
 theme = "t4eq"
 

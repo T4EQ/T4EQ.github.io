@@ -1,9 +1,9 @@
 ---
 title: "About"
-layout: "work"
-hero_title: "About"
+layout: "about"
+hero_title: "Our Approach"
 hero_text: "We envision a world where technology bridges inequality and gives every individual the tools to live with dignity and opportunity."
-hero_image: "/images/hero-work.jpg"
+hero_image: "/images/kids.jpg"
 
 values_title: "Our Values"
 values_intro: "Our work is grounded in a set of core values that define our approach to technology, partnerships, and community impact:"
@@ -11,7 +11,7 @@ values:
   - title: "Equality"
     text: "We believe access to technology and knowledge is a fundamental right, not a privilege."
   - title: "Transparency"
-    text: "We work open-source to foster trust and ensure our solutions can be improved by the community."
+    text: "We work open-source to foster trust and ensure our solutions can be improved by the global community."
   - title: "Empowerment"
     text: "We believe in transferring the knowledge necessary for communities to own their solutions."
   - title: "Community-first"
@@ -43,5 +43,5 @@ process:
       - "Team up with strategic partners and/or secure grants to scale the solution"
 
 team_cta_text: "A community of engineers, designers and development professionals committed to closing the digital divide."
-team_cta_image: "/images/cta-team.jpg"
+team_cta_image: "/images/workingteam.jpg"
 ---

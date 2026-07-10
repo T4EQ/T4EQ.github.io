@@ -287,6 +287,10 @@ body {
   overflow: hidden;
   color: var(--offwhite);
   background: var(--black);
+  min-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .c-band--image > .c-band__bg {
   position: absolute;
@@ -347,6 +351,9 @@ body {
   position: relative;
   background: var(--purple);
   overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
   padding: var(--space-xl) 0;
 }
 .c-hero--home {
@@ -376,7 +383,7 @@ body {
 .c-hero__logo { width: min(560px, 90%); height: auto; display: block; }
 .c-hero__title {
   font-family: var(--font-mono);
-  font-size: var(--fs-h1);
+  font-size: clamp(2.5rem, 5.5vw, 5rem);
   font-weight: 500;
   color: var(--offwhite);
   line-height: 1;
@@ -554,13 +561,17 @@ main > .c-pageheader:first-child { padding-top: var(--nav-height); }
   display: flex;
   align-items: stretch;
   gap: var(--space-sm);
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  padding: 0 var(--space-md);
 }
 .c-process__step {
   border: 1px solid var(--line-soft);
   border-radius: var(--radius-md);
-  padding: var(--space-sm);
-  flex: 1 1 160px;
+  padding: var(--space-md);
+  flex: 0 1 350px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
   font-family: var(--font-sans);
   font-size: var(--fs-body);
   font-weight: 400;
@@ -659,7 +670,7 @@ main > .c-pageheader:first-child { padding-top: var(--nav-height); }
   padding: var(--space-xl) 0;
   background: var(--black);
   overflow: hidden;
-  min-height: 55vh;
+  min-height: 85vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -748,6 +759,9 @@ main > .c-pageheader:first-child { padding-top: var(--nav-height); }
   .c-project__head { grid-template-columns: 1fr; }
   .c-project__detail { grid-template-columns: 1fr; }
   .c-mv            { grid-template-columns: 1fr; }
+  .c-process__steps { flex-direction: column; }
+  .c-process__step { flex-basis: auto; padding: var(--space-md) var(--space-md); }
+  .c-process__arrow { align-self: center; transform: rotate(90deg); }
 }
 
 @media (max-width: 640px) {
@@ -755,6 +769,4 @@ main > .c-pageheader:first-child { padding-top: var(--nav-height); }
   .c-card-grid--2,
   .c-card-grid--3  { grid-template-columns: 1fr; }
   .c-people-grid   { grid-template-columns: 1fr; }
-  .c-process__steps { flex-direction: column; }
-  .c-process__arrow { transform: rotate(90deg); }
 }
