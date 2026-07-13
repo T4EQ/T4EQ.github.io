@@ -544,6 +544,12 @@ main > .c-pageheader:first-child { padding-top: calc(var(--nav-height) + var(--s
   margin-bottom: var(--space-md);
 }
 .c-person__photo img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+.c-person__photo a { display: block; width: 100%; height: 100%; }
+/* Partner logos: show whole mark without cropping, no tile background */
+.c-band--green .c-person__photo { background: none; aspect-ratio: auto; height: auto; margin-top: var(--space-xl); margin-bottom: var(--space-xl); }
+.c-band--green .c-person__photo img { object-fit: contain; object-position: left center; height: auto; }
+.c-people-outro { margin-top: var(--space-xl); margin-bottom: 0; }
+.c-band--people:has(.c-people-outro) { padding-bottom: var(--space-md); }
 .c-person__name {
   font-family: var(--font-mono);
   font-size: var(--fs-h4);
@@ -872,7 +878,7 @@ main > .c-pageheader:first-child { padding-top: calc(var(--nav-height) + var(--s
 }
 .c-form__input:focus,
 .c-form__textarea:focus { outline: none; border-color: var(--offwhite); }
-.c-form__textarea { min-height: 320px; resize: vertical; }
+.c-form__textarea { min-height: 320px; resize: none; }
 .c-form__status {
   margin-top: var(--space-sm);
   font-family: var(--font-sans);

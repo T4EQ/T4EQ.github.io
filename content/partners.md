@@ -1,7 +1,7 @@
 ---
 title: "Partners"
 layout: "partners"
-hero_title: "Work with us!"
+hero_title: "Work with Us!"
 hero_text: "We collaborate with NGOs, local organisations and companies that share our conviction that technology should serve everyone."
 hero_image: "/images/kids2.jpg"
 
@@ -22,10 +22,12 @@ support_ways:
     text: "Fuel our platform development, rapid prototyping, and solution deployments where they are needed most."
 
 
-partners_intro: "The organisations we work with on the ground."
 partners:
   - name: "AID India"
-    text: "Our community partner in Tamil Nadu, India — operating Eureka Village Centers providing accessible education in 647 villages."
+    image: "/images/partners/aidindia.png"
+    link: "https://aidindia.in/"
+    hideName: true
+    text: "Our community partner in Tamil Nadu, India, operating Eureka Village Centers that provide accessible education in 647 villages. We are currently partnering with them to build solutions for rural villages within their network."
 
 highlight:
   name: "LEAP"

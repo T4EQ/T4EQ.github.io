@@ -31,7 +31,7 @@ projects:
     image: ""
 
 services_title: "Our Services"
-services_intro: "We are committed to addressing societal challenges aligned with the UN Sustainable Development Goals (SDGs). To turn this commitment into tangible impact, we leverage a multidisciplinary skillset spanning embedded and software engineering, security engineering, and hardware development (electrical, mechanical, and optical), bridging complex engineering and community-led change through our core services."
+services_intro: "To turn our mission into impact, we leverage a multidisciplinary skillset spanning embedded and software engineering, security engineering, and hardware development (electrical, mechanical, and optical), bridging complex engineering and community-led change through our core services."
 
 cta_text: "Have a challenge technology could help solve? Tell us about it."
 cta_image: "/images/challenge.jpg"

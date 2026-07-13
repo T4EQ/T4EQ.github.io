@@ -27,14 +27,15 @@
       {{ range .people }}
       <article class="c-person">
         <div class="c-person__photo">
-          {{ if .image }}<img src="{{ .image }}" alt="{{ .name }}" loading="lazy">{{ end }}
+          {{ if .image }}{{ if .link }}<a href="{{ .link }}" target="_blank" rel="noopener" aria-label="{{ .name }}"><img src="{{ .image }}" alt="{{ .name }}" loading="lazy"></a>{{ else }}<img src="{{ .image }}" alt="{{ .name }}" loading="lazy">{{ end }}{{ end }}
         </div>
-        <p class="c-person__name">{{ if .link }}<a class="c-person__name-link" href="{{ .link }}" target="_blank" rel="noopener">{{ .name }}</a>{{ else }}{{ .name }}{{ end }}</p>
+        {{ if not .hideName }}<p class="c-person__name">{{ if .link }}<a class="c-person__name-link" href="{{ .link }}" target="_blank" rel="noopener">{{ .name }}</a>{{ else }}{{ .name }}{{ end }}</p>{{ end }}
         {{ with .text }}<p class="c-person__text">{{ . }}</p>{{ end }}
         {{ with .focus }}<p class="c-person__focus">{{ . }}</p>{{ end }}
       </article>
       {{ end }}
     </div>
     {{ end }}
+    {{ with .outro }}<p class="c-band__intro c-band__intro--wide c-band__intro--lead c-people-outro">{{ . }}</p>{{ end }}
   </div>
 </section>
