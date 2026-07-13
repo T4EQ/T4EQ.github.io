@@ -1,5 +1,5 @@
 {{- /* Pill button/link. Always a solid white pill for internal navigation. Params: url, label */ -}}
 {{- $label := .label | default "Learn more" -}}
 {{- with .url -}}
-<a href="{{ . }}" class="c-btn">{{ $label }} →</a>
+<a href="{{ . }}" class="c-btn">{{ $label }} <span class="c-arrow" aria-hidden="true">→</span></a>
 {{- end -}}

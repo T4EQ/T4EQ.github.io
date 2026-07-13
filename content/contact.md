@@ -5,8 +5,8 @@ intro: "Have a question, a project idea, or a challenge technology could help so
 
 connect_text: "Follow our work and join the conversation on social media."
 linkedin: "https://www.linkedin.com/company/t4eq"
-facebook: "https://www.facebook.com/t4eq"
-instagram: "https://www.instagram.com/t4eq"
+github: "https://github.com/t4eq"
+instagram: "https://www.instagram.com/t4eq_org"
 
 # Where contact messages are sent.
 # To send messages straight to your inbox with no page reload, create a free

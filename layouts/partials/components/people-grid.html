@@ -15,8 +15,9 @@
         <div class="c-person__photo">
           {{ if .image }}<img src="{{ .image }}" alt="{{ .name }}" loading="lazy">{{ end }}
         </div>
-        <p class="c-person__name">{{ .name }}</p>
+        <p class="c-person__name">{{ if .link }}<a class="c-person__name-link" href="{{ .link }}" target="_blank" rel="noopener">{{ .name }}</a>{{ else }}{{ .name }}{{ end }}</p>
         {{ with .text }}<p class="c-person__text">{{ . }}</p>{{ end }}
+        {{ with .focus }}<p class="c-person__focus">{{ . }}</p>{{ end }}
       </article>
       {{ end }}
     </div>
@@ -28,8 +29,9 @@
         <div class="c-person__photo">
           {{ if .image }}<img src="{{ .image }}" alt="{{ .name }}" loading="lazy">{{ end }}
         </div>
-        <p class="c-person__name">{{ .name }}</p>
+        <p class="c-person__name">{{ if .link }}<a class="c-person__name-link" href="{{ .link }}" target="_blank" rel="noopener">{{ .name }}</a>{{ else }}{{ .name }}{{ end }}</p>
         {{ with .text }}<p class="c-person__text">{{ . }}</p>{{ end }}
+        {{ with .focus }}<p class="c-person__focus">{{ . }}</p>{{ end }}
       </article>
       {{ end }}
     </div>
