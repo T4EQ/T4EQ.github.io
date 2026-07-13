@@ -22,13 +22,13 @@
 
   /* ── Type roles — edit size + weight together, ONLY here ──
      Headings: Roboto Mono · Text: Inter */
-  --fs-h1: 4rem;     --fw-h1: 500;  /* 64px · lh 1.0 · ls -2% */
-  --fs-h2: 2.75rem;  --fw-h2: 500;  /* 44px · lh 1.0 · ls -2% */
-  --fs-h3: 1.75rem;  --fw-h3: 500;  /* 28px · lh 1.1 · ls -2% */
-  --fs-h4: 1.375rem; --fw-h4: 500;  /* 22px · lh 1.2 · ls -1% */
-  --fs-t1: 1.5rem;  --fw-t1: 300; /* 24px · lead (Inter) */
-  --fs-t2: 1.25rem;    --fw-t2: 300;  /* 16px · body (Inter) */
-  --fs-t3: 0.75rem; --fw-t3: 300;  /* 12px · caption (Inter) */
+  --fs-h1: 4rem;     --fw-h1: 500;    /* 64px · lh 1.0 · ls -2% */
+  --fs-h2: 2.75rem;  --fw-h2: 500;    /* 44px · lh 1.0 · ls -2% */
+  --fs-h3: 1.75rem;  --fw-h3: 500;    /* 28px · lh 1.1 · ls -2% */
+  --fs-h4: 1.375rem; --fw-h4: 500;    /* 22px · lh 1.2 · ls -1% */
+  --fs-t1: 1.5rem;   --fw-t1: 300;    /* 24px · lead (Inter) */
+  --fs-t2: 1.25rem;  --fw-t2: 300;    /* 16px · body (Inter) */
+  --fs-t3: 0.85rem;  --fw-t3: 300;    /* 14px · caption (Inter) */
 
   --ls-tight: -0.02em; /* h1–h3 */
   --ls-snug:  -0.01em; /* h4 */
@@ -193,7 +193,7 @@ body {
 
 .footer-links a {
   font-family: var(--font-mono);
-  font-size: 1rem;
+  font-size: 1.25rem;
   color: var(--offwhite);
   opacity: 1;
   letter-spacing: 0.02em;
@@ -297,13 +297,15 @@ body {
   align-items: center;
   gap: 6px;
   font-family: var(--font-sans);
-  font-size: 0.82rem;
+  font-size: var(--fs-t3);
+  font-weight: var(--fw-t3);
   background: var(--offwhite);
   color: var(--purple);
   border: none;
   border-radius: 999px;
   padding: 7px 18px;
   width: fit-content;
+  white-space: nowrap;
   cursor: pointer;
   transition: opacity 0.2s;
 }
@@ -319,7 +321,7 @@ body {
 
 /* ── Band (colored full-width section) ── */
 .c-band { padding-bottom: var(--space-xl); }
-.c-band--people { padding-top: var(--space-xl); padding-bottom: calc(var(--space-xl) + var(--space-lg)); }
+.c-band--people { padding-top: var(--space-mdins); padding-bottom: calc(var(--space-xl) + var(--space-lg)); }
 .c-band--people:has(.c-band__bar) { padding-top: 0; }
 .c-band--green .c-person__photo:not(:has(img)) { display: none; }
 .c-band--purple { background: var(--purple); color: var(--offwhite); }
@@ -480,8 +482,9 @@ main > .c-pageheader:first-child { padding-top: calc(var(--nav-height) + var(--s
   transition: border-color 0.2s;
 }
 .c-card:hover { border-color: var(--line); }
-.c-card__icon { width: 40px; height: 40px; color: var(--offwhite); }
+.c-card__icon { width: 96px; height: 96px; color: var(--offwhite); }
 .c-card__icon svg { width: 100%; height: 100%; }
+.c-card__icon img { width: 100%; height: 100%; object-fit: contain; }
 .c-card__title {
   font-family: var(--font-mono);
   font-size: var(--fs-h3);
@@ -610,10 +613,10 @@ main > .c-pageheader:first-child { padding-top: calc(var(--nav-height) + var(--s
 .c-project__subtitle {
   display: block;
   font-family: var(--font-mono);
-  font-size: var(--fs-h4);
-  font-weight: var(--fw-h4);
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-h3);
   line-height: 1.2;
-  letter-spacing: var(--ls-snug);
+  letter-spacing: var(--ls-tight);
   color: var(--offwhite);
   margin-top: var(--space-xs);
 }
@@ -651,6 +654,7 @@ main > .c-pageheader:first-child { padding-top: calc(var(--nav-height) + var(--s
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--space-md) var(--space-lg);
+  margin-top: var(--space-lg);
   font-family: var(--font-sans);
   font-size: var(--fs-t2);
   font-weight: var(--fw-t2);
