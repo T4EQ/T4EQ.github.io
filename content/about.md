@@ -30,21 +30,24 @@ mission_vision:
     text: "In the long term, we aim to create an open and structured platform that connects stakeholders with different objectives around a common social impact initiative."
 
 process_title: "How do we work?"
-process_intro: "As part of our mission, we are actively working on projects aligned with the Sustainable Development Goals (SDGs). Our initial efforts focus on SDG #4: Quality Education, particularly in the context of rural development."
+process_intro: "Our structured, three-phase process outlines how we collaborate with partner NGOs from initial project discovery through to technical execution and long-term scaling. Every phase is driven by a continuous feedback loop with our partner NGOs.
+"
 process:
   - title: "Phase 1: Discover and Define"
     steps:
-      - "Partner with on-the-field NGOs/communities active across SDGs"
-      - "Understand challenges and technology need"
-      - "Co-define project"
+      - "Partner with on-the-field NGOs active across SDGs"
+      - "Analyze local community challenges and technology needs"
+      - "Collaboratively align on shared project goals and vision"
   - title: "Phase 2: Project Scoping and Execution"
     steps:
-      - "Kickoff: Perform technical feasibility"
-      - "Match project needs with internal team"
-      - "Build, test, and refine first prototype"
+      - "Kick off technical feasibility and define operational scope"
+      - "Align specific project needs with our internal team"
+      - "Build, test, and refine the first prototype solution"
   - title: "Phase 3: Scaling Strategy"
     steps:
-      - "Team up with strategic partners and/or secure grants to scale the solution"
+      - "Secure grants and collaborate with strategic partners"
+      - "Train and empower local teams for operational independence"
+      - "Transition the solution to complete local ownership"
 
 team_cta_text: "A community of engineers, designers and development professionals committed to closing the digital divide."
 team_cta_image: "/images/workingteam.jpg"
