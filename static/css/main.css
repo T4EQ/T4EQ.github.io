@@ -671,7 +671,7 @@ main > .c-pageheader:first-child { padding-top: calc(var(--nav-height) + var(--s
 
 /* Nudge solution links down to align with the challenge's 2nd paragraph (2-col only) */
 @media (min-width: 901px) {
-  .c-project__detail .c-project__actions { margin-top: var(--space-lg); }
+  .c-project__detail .c-project__actions { margin-top: var(--space-xl); }
 }
 
 /* ── Process steps (phased) ── */
