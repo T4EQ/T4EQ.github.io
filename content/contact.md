@@ -1,7 +1,7 @@
 ---
 title: "Contact"
 layout: "contact"
-intro: "Have a question, a project idea, or a challenge technology could help solve? Drop us a message — we'd love to hear from you."
+intro: "Have a question, a tech challenge to solve, or a partnership idea? Drop us a message with how you’d like to get involved — we’d love to hear from you."
 
 connect_text: "Follow our work and join the conversation on social media."
 
