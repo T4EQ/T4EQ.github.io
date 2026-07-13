@@ -3,7 +3,7 @@ title: "Partners"
 layout: "partners"
 hero_title: "Work with Us!"
 hero_text: "We collaborate with NGOs, local organisations and companies that share our conviction that technology should serve everyone."
-hero_image: "/images/kids2.jpg"
+hero_image: "/images/backgrounds/partners_hero.jpg"
 
 support_text: |
   We are building an open tech platform to drive sustainable social impact. Whether you want to share your expertise, help us scale existing initiatives, or contribute financially, your support strengthens our initiative. There are several ways to get involved.
@@ -33,7 +33,7 @@ highlight:
   name: "LEAP"
   date: "2025"
   place: "Tamil Nadu, India"
-  image: "/images/project-highlight.jpg"
+  image: "/images/backgrounds/project_highlight.jpg"
   text: "The Low-bandwidth Educational Access Platform brings offline-first digital learning tools to schools in remote areas with limited or no internet connectivity."
   link:
     url: "/projects/"

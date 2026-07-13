@@ -1,6 +1,6 @@
 ---
 title: "T4EQ — Tech for Equality"
-hero_image: "/images/hero-home.jpg"
+hero_image: "/images/backgrounds/home_hero.jpg"
 tagline: "We envision a world where technology bridges inequality and gives every individual the tools to live with dignity and opportunity."
 
 mission_vision_title: "Our Mission and Vision"
@@ -20,7 +20,7 @@ highlight:
   name: "LEAP — Low-bandwidth Educational Access Platform"
   date: "2025"
   place: "Tamil Nadu, India"
-  image: "/images/project-highlight.jpg"
+  image: "/images/backgrounds/project_highlight.jpg"
   text: "An engineering solution designed to reliably deliver high-quality educational video content to students in rural Indian villages, successfully bypassing the constraints of absent, intermittent, or low-bandwidth internet."
   link:
     url: "/projects/"

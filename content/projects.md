@@ -20,7 +20,7 @@ projects:
     article:
       url: "https://www.raspberrypi.com/news/leap-low-bandwidth-educational-access-platform/"
       label: "Read the feature on Raspberry Pi"
-    image: "/images/leapillustration.png"
+    image: "/images/projects_leap.png"
 
   - name: "Solar Lighting for Rural Classrooms"
     community: "AID India, Tamil Nadu, India"
@@ -34,5 +34,5 @@ services_title: "Our Services"
 services_intro: "To turn our mission into impact, we leverage a multidisciplinary skillset spanning embedded and software engineering, security engineering, and hardware development (electrical, mechanical, and optical), bridging complex engineering and community-led change through our core services."
 
 cta_text: "Have a challenge technology could help solve? Tell us about it."
-cta_image: "/images/challenge.jpg"
+cta_image: "/images/backgrounds/projects_cta.jpg"
 ---
