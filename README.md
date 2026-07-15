@@ -5,13 +5,10 @@ built with [Hugo](https://gohugo.io/) (extended) using a custom in-house theme.
 
 ## Requirements
 
-- **Hugo extended**, `v0.162.1` or newer.
+- **Hugo extended**, `v0.163.3` or newer.
   Prebuilt binaries: <https://github.com/gohugoio/hugo/releases>.
   On macOS: `brew install hugo`.
-
-> The site uses features (e.g. `.Site.Language.Locale`) that require a recent
-> Hugo. Keep your local version in sync with the `HUGO_VERSION` pinned in
-> [.github/workflows/hugo.yml](.github/workflows/hugo.yml).
+  With nix: `nix develop`.
 
 ## Local development
 
