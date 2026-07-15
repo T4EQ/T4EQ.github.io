@@ -1,0 +1,30 @@
+{{ define "main" }}
+
+{{ partial "components/project-list.html" (dict
+  "background" "c-band--purple"
+  "title" .Title
+  "level" "h1"
+  "intro" .Params.intro
+  "projects" .Params.projects
+) }}
+
+{{ partial "components/card-grid.html" (dict
+  "background" "c-band--green"
+  "title" (.Params.services_title | default "Our Services")
+  "intro" .Params.services_intro
+  "columns" 3
+  "icons" true
+  "reserveTitles" true
+  "cards" hugo.Data.services
+) }}
+
+{{ partial "components/cta.html" (dict
+  "title" "Share Your Challenge"
+  "ariaLabel" "Share Your Challenge"
+  "image" .Params.cta_image
+  "cardColor" "purple"
+  "text" (.Params.cta_text | default "Have a challenge technology could help solve? Tell us about it.")
+  "button" (dict "url" "/contact/" "label" "Get in touch")
+) }}
+
+{{ end }}

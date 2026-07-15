@@ -1,7 +1,6 @@
-**/_gen
-/.hugo_build.lock
-/public
-
-/nix-portable
-/.direnv
-/result
+public/
+resources/
+.hugo_build.lock
+.DS_Store
+hugo_stats.json
+static/images/mockups/

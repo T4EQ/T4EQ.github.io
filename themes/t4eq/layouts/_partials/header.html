@@ -1,0 +1,11 @@
+<nav class="nav-inner">
+  <ul class="nav-links">
+    {{ range site.Menus.main }}
+    <li><a href="{{ .URL }}" class="{{ if eq $.RelPermalink .URL }}active{{ end }}">{{ .Name }}</a></li>
+    {{ end }}
+  </ul>
+  <a href="/" class="site-logo" aria-label="T4EQ Home">
+    <span class="logo-line1">T4 | Tech for</span>
+    <span class="logo-line2">EQ | Equality</span>
+  </a>
+</nav>

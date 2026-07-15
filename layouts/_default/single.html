@@ -1,0 +1,39 @@
+{{ define "main" }}
+
+{{ partial "components/hero.html" (dict
+  "page" .
+  "image" .Params.hero_image
+  "title" (.Params.hero_title | default .Title)
+  "text" .Params.hero_text
+) }}
+
+{{/* ── FRONT-MATTER SECTIONS — alternating purple / green ── */}}
+{{ range $i, $s := .Params.sections }}
+{{ $bg := cond (eq (mod $i 2) 0) "c-band--purple" "c-band--green" }}
+{{ if $s.cards }}
+{{ partial "components/card-grid.html" (dict
+  "background" $bg
+  "title" $s.title
+  "intro" $s.intro
+  "cards" $s.cards
+) }}
+{{ else }}
+{{ partial "components/prose.html" (dict
+  "background" $bg
+  "title" $s.title
+  "intro" $s.intro
+  "body" $s.text
+) }}
+{{ end }}
+{{ end }}
+
+{{/* ── MARKDOWN BODY — stub pages ── */}}
+{{ if .Content }}
+{{ partial "components/prose.html" (dict
+  "background" "c-band--purple"
+  "body" .Content
+  "bodyIsHtml" true
+) }}
+{{ end }}
+
+{{ end }}

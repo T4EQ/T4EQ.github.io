@@ -1,0 +1,19 @@
+{{- /* CTA band: background image + overlaid coloured card.
+       Params: page, title, ariaLabel, image, cardColor (green|purple),
+               meta (slice of lines), text, button (dict url/label) */ -}}
+<section class="c-cta" aria-label="{{ .ariaLabel | default .title }}">
+  {{ with .image }}<img class="c-cta__bg" src="{{ . }}" alt="" aria-hidden="true">{{ end }}
+  <div class="c-gridlines" aria-hidden="true">
+    <div class="c-gridlines__col"></div><div class="c-gridlines__col"></div><div class="c-gridlines__col"></div>
+  </div>
+  <div class="container">
+    <h2 class="c-cta__title">{{ .title }}</h2>
+    <div class="c-cta__card c-cta__card--{{ .cardColor | default "purple" }}">
+      {{ with .meta }}
+      <div class="c-cta__meta">{{ range . }}{{ . }}<br>{{ end }}</div>
+      {{ end }}
+      {{ with .text }}{{ range (split . "\n") }}{{ with (trim . " ") }}<p class="c-cta__text">{{ . }}</p>{{ end }}{{ end }}{{ end }}
+      {{ with .button }}{{ partial "components/button.html" (dict "url" .url "label" .label) }}{{ end }}
+    </div>
+  </div>
+</section>

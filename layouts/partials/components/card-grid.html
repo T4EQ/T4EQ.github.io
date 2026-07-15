@@ -1,0 +1,18 @@
+{{- /* Card grid band. Params: background (c-band--*), title, level (h1|h2),
+       intro, columns (2|3), cards (slice of {title,text,link,icon}) */ -}}
+<section class="c-band {{ .background | default "c-band--purple" }}"{{ with .id }} id="{{ . }}"{{ end }}>
+  {{ partial "components/_band-header.html" (dict "title" .title "level" .level) }}
+  <div class="container">
+    {{ with .intro }}<p class="c-band__intro c-band__intro--wide c-band__intro--lead">{{ . }}</p>{{ end }}
+    <div class="c-card-grid c-card-grid--{{ .columns | default 3 }}{{ if .reserveTitles }} c-card-grid--reserve{{ end }}">
+      {{ range .cards }}
+      <article class="c-card">
+        {{ if or .icon $.icons }}{{ partial "components/icon.html" (dict "name" .icon) }}{{ end }}
+        <h3 class="c-card__title">{{ .title }}</h3>
+        <p class="c-card__text">{{ .text }}</p>
+        {{ with .link }}{{ partial "components/button.html" (dict "url" (or .url (index site.Params (.param | default ""))) "label" .label) }}{{ end }}
+      </article>
+      {{ end }}
+    </div>
+  </div>
+</section>

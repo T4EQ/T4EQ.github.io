@@ -1,0 +1,30 @@
+{{ define "main" }}
+
+{{ partial "components/hero.html" (dict
+  "page" .
+  "image" .Params.hero_image
+  "title" (.Params.hero_title | default .Title)
+  "text" .Params.hero_text
+) }}
+
+{{ partial "components/prose.html" (dict
+  "background" "c-band--purple"
+  "title" "Support Us"
+  "intro" .Params.support_text
+) }}
+
+{{ partial "components/mission-vision.html" (dict
+  "background" "c-band--purple"
+  "class" "c-band--flush-top"
+  "cards" .Params.support_ways
+) }}
+
+{{ partial "components/people-grid.html" (dict
+  "background" "c-band--green"
+  "title" (.Params.partners_title | default "Our Partners")
+  "intro" .Params.partners_intro
+  "outro" .Params.partners_outro
+  "people" .Params.partners
+) }}
+
+{{ end }}
