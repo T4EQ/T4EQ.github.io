@@ -4,3 +4,5 @@ resources/
 .DS_Store
 hugo_stats.json
 static/images/mockups/
+.direnv
+result
