@@ -1,0 +1,29 @@
+{{- /* Image hero. Params: page, ariaLabel, modifier (e.g. c-hero--home),
+       image, title, text, titleImage, titleImageAlt */ -}}
+<section class="c-hero{{ with .modifier }} {{ . }}{{ end }}" aria-label="{{ .ariaLabel | default "Page header" }}">
+  {{ with .image }}<img class="c-hero__bg" src="{{ . }}" alt="" aria-hidden="true">{{ end }}
+  <div class="c-gridlines" aria-hidden="true">
+    <div class="c-gridlines__col"></div><div class="c-gridlines__col"></div><div class="c-gridlines__col"></div>
+  </div>
+  <div class="container">
+    {{ if .titleImage }}
+    <div class="c-hero__inner">
+      <h1>
+        <img src="{{ .titleImage }}"
+             alt="{{ .titleImageAlt | default .page.Site.Title }}"
+             class="c-hero__logo">
+      </h1>
+      {{ with .text }}<p class="c-hero__sub">{{ . }}</p>{{ end }}
+    </div>
+    {{ else if .text }}
+    <div class="c-hero__inner">
+      <h1 class="c-hero__title">{{ .title }}</h1>
+      <p class="c-hero__sub">{{ .text }}</p>
+    </div>
+    {{ else }}
+    <div class="c-hero__inner c-hero__inner--single">
+      <h1 class="c-hero__title">{{ .title }}</h1>
+    </div>
+    {{ end }}
+  </div>
+</section>

@@ -1,29 +1,59 @@
-baseURL = 'https://t4eq.org/'
-languageCode = 'en-us'
-title = 'T4EQ – Tech for Equality'
-theme = 'ananke'
-
-SectionPagesMenu = "main"
-googleAnalytics = ""
-enableRobotsTXT = true
-Paginate = 2
-
-[sitemap]
-changefreq = "monthly"
-priority = 0.5
-filename = "sitemap.xml"
+baseURL = "https://t4eq.org/"
+locale = "en-US"
+title = "T4EQ — Tech for Equality"
+theme = "t4eq"
 
 [params]
-text_color = "black"
-author = ""
-favicon = ""
-site_logo = "/images/logo/2026-03-26_T4EQ_Logo-Screen-negative.png"
-description = "The last theme you'll ever need. Maybe."
-body_classes = "avenir bg-near-white"
-fontWeight = "normal"
-# choose a background color from any on this page: https://tachyons.io/docs/themes/skins/ and preface it with "bg-"
-# background_color_class = "bg-dark-blue "
-recent_posts_number = 1
-heading_font = "serif"
-canonicalURL = 'https://t4eq.org/'
-custom_css = ["ananke/css/custom.css"]
+  description = "We envision a world where technology bridges inequality and gives every individual the tools to live with dignity and opportunity."
+  tagline = "We envision a world where technology bridges inequality and gives every individual the tools to live with dignity and opportunity."
+  ogImage = "/images/og-image.png"
+  linkedin = "https://www.linkedin.com/company/t4eq"
+  github = "https://github.com/t4eq"
+  instagram = "https://www.instagram.com/t4eq_org"
+
+[menu]
+  [[menu.main]]
+    name = "Home"
+    url = "/"
+    weight = 1
+  [[menu.main]]
+    name = "About"
+    url = "/about/"
+    weight = 2
+  [[menu.main]]
+    name = "Projects"
+    url = "/projects/"
+    weight = 3
+  [[menu.main]]
+    name = "Team"
+    url = "/team/"
+    weight = 4
+  [[menu.main]]
+    name = "Partners"
+    url = "/partners/"
+    weight = 5
+  [[menu.main]]
+    name = "Contact"
+    url = "/contact/"
+    weight = 6
+
+  [[menu.footer]]
+    name = "Tech for Equality"
+    url = "/"
+    weight = 1
+  [[menu.footer]]
+    name = "Social Media"
+    url = "/contact/#connect"
+    weight = 2
+  [[menu.footer]]
+    name = "Contact"
+    url = "/contact/"
+    weight = 3
+
+[build]
+  writeStats = true
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true

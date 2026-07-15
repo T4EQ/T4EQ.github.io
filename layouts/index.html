@@ -1,0 +1,44 @@
+{{ define "main" }}
+
+{{ partial "components/hero.html" (dict
+  "page" .
+  "ariaLabel" "Hero"
+  "modifier" "c-hero--home"
+  "image" .Params.hero_image
+  "titleImage" "/images/logos/logo-offwhite.svg"
+  "titleImageAlt" "T4EQ — Tech for Equality"
+  "text" (.Params.tagline | default .Site.Params.tagline)
+) }}
+
+{{ partial "components/mission-vision.html" (dict
+  "background" "c-band--purple"
+  "title" (.Params.mission_vision_title | default "Our Mission and Vision")
+  "intro" .Params.mission_vision_intro
+  "cards" .Params.mission_vision
+  "showDiagram" false
+) }}
+
+{{ partial "components/card-grid.html" (dict
+  "background" "c-band--green"
+  "title" (.Params.services_title | default "Our Services")
+  "intro" .Params.services_intro
+  "columns" 3
+  "icons" true
+  "reserveTitles" true
+  "cards" hugo.Data.services
+) }}
+
+{{ with .Params.highlight }}
+{{ partial "components/highlight.html" (dict
+  "title" ($.Params.highlight_section_title | default "Project Highlight")
+  "ariaLabel" "Project highlight"
+  "image" .image
+  "name" .name
+  "meta" (slice .date .place)
+  "text" .text
+  "button" .link
+  "article" .article
+) }}
+{{ end }}
+
+{{ end }}

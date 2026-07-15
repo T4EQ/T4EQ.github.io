@@ -1,120 +1,175 @@
-# T4EQ.github.io
+# T4EQ — Tech for Equality
 
-## About the project
+Source for the [Tech for Equality](https://t4eq.org) website — a static site
+built with [Hugo](https://gohugo.io/) (extended) using a custom in-house theme.
 
-This repository holds the sources of the [t4eq.github.io](https://t4eq.github.io) website. 
-The website is built with [Hugo](https://gohugo.io/) using a set of resources written in 
-[markdown](https://www.markdownguide.org/).
+## Requirements
 
-## Getting started
+- **Hugo extended**, `v0.162.1` or newer.
+  Prebuilt binaries: <https://github.com/gohugoio/hugo/releases>.
+  On macOS: `brew install hugo`.
 
-Clone the repository with:
+> The site uses features (e.g. `.Site.Language.Locale`) that require a recent
+> Hugo. Keep your local version in sync with the `HUGO_VERSION` pinned in
+> [.github/workflows/hugo.yml](.github/workflows/hugo.yml).
 
-```sh
-git clone --recurse-submodules git@github.com:T4EQ/T4EQ.github.io.git 
-```
+## Local development
 
-This will create a `T4EQ.github.io` directory inside your current working directory.
-The layout of this directory is as follows: 
-
-```
-.
-├── README.md           -> This file. Contains information about the project.
-├── hugo.toml           -> Configuration file for Hugo.
-├── content             -> All the content of the website. Contains the markdown sources.
-│   ├── _index.md       -> Index page of the website, shown when you visit T4EQ.github.io.
-│   ├── about.md        -> About page.
-│   └── contact.md      -> Contact page.
-├── archetypes         
-│   └── default.md      -> Default skeleton used for all new content created with Hugo.
-├── themes              
-│   └── ananke          -> The theme used for the website
-├── flake.nix           -> Declares the dependencies of the repo in order to perform reproducible web builds. You can safely ignore this file.
-└── flake.lock          -> Pins the dependencies of the repository. You can safely ignore this file.
-```
-
-For detailed instructions of how to use Hugo see its [Documentation](https://gohugo.io/documentation/) page.
-
-### Dependencies
-
-This website relies on the following software:
-- `Hugo`, `v0.136.5`. You can find prebuilt binaries for most target operating systems and CPU architectures 
-  [here](https://github.com/gohugoio/hugo/releases/tag/v0.136.5).
-- _Optional:_ `Nix` package manager. See download instructions [here](https://nixos.org/download/).
-
-The `Nix` package manager is used to ensure that the build results are fully reproducible accross 
-all machines. When using `Nix`, you don't need to worry about installing `Hugo` separately. It is mostly
-intended for continuous integration/deployment in GitHub, so you may decide to skip its installation 
-for your development setup.
-
-### Build with Hugo
-
-To build the website simply run:
+Serve the site with live reload at <http://localhost:1313>:
 
 ```sh
-hugo
+hugo server --disableFastRender --noHTTPCache
 ```
 
-A `public` directory will be created, which contains the static content of the built website. You can open
-`index.html` in a web browser to view the website locally.
-
-Alternatively, you can serve the website locally on port `1313` using:
+Produce a production build into `public/`:
 
 ```sh
-hugo serve
+hugo --minify
 ```
 
-Note that this command does not terminate. Instead, it watches all file changes to the content of 
-the website and automatically rebuilds the contents when they change, so that simply refreshing the 
-web browser page displays the latest edits. The web page is accessible in `http://localhost:1313`
+## Project structure
 
-### Build with Nix
-
-As mentioned above, this setup is mainly intended for continuous integration/deployment. However, 
-if you have the `Nix` package manager installed in your system, it will automatically ensure you 
-get the right `Hugo` version out of the box.
-
-You can build the website with:
-
-```sh
-nix build --extra-experimental-features 'nix-command flakes' .
+```
+hugo.toml        -> Site configuration (baseURL, menus, params).
+content/         -> Page content and front matter (Markdown).
+data/            -> Structured data (team.yaml, services.yaml).
+static/          -> Assets served as-is:
+  css/main.css   ->   The single active stylesheet.
+  js/main.js     ->   Site JavaScript (nav, contact form).
+  images/        ->   Logos, team photos, mockups.
+layouts/         -> The ACTIVE templates that render the site:
+  _default/      ->   Per-page templates (team, work, contact, ...).
+  partials/      ->   Reusable partials + components/.
+themes/t4eq/     -> Legacy theme copy — NOT used for rendering (root
+                    layouts/ and static/ take precedence).
 ```
 
-And find the result under the `result` directory.
+> When editing templates, styles, or scripts, edit the files under the
+> repository root (`layouts/`, `static/css/main.css`, `static/js/main.js`).
+> The copies inside `themes/t4eq/` are not used.
 
-Or you can enter a development shell with the full environment preconfigured and run the build steps 
-listed in [Build with Hugo](#build-with-hugo), using:
+## Editing content
 
-```sh
-nix develop --extra-experimental-features 'nix-command flakes' .
+- **Pages** live in `content/` as Markdown with YAML/TOML front matter.
+  Create a new page with `hugo new content content/<name>.md`.
+- **Team members** are defined in [data/team.yaml](data/team.yaml).
+- **Services** are defined in [data/services.yaml](data/services.yaml).
+- **Navigation and footer menus** are configured in the `[menu]` section of
+  [hugo.toml](hugo.toml).
+
+## Publishing (production)
+
+The production site is published to **GitHub Pages** and served at
+**<https://t4eq.org>**.
+
+Deployment is automated by
+[.github/workflows/hugo.yml](.github/workflows/hugo.yml):
+
+1. Open a pull request with your changes and get it reviewed.
+2. Merge into the **`main`** branch.
+3. On push to `main`, the workflow builds the site with `hugo --minify` and
+   deploys it to GitHub Pages via `actions/deploy-pages`.
+
+The workflow also builds (but does **not** deploy) on the `redesign` branch, so
+you can confirm the build passes before merging.
+
+## Preview / staging site
+
+A hidden staging build (the "v2" redesign) is published under a subpath so work
+can be reviewed before going live:
+
+- URL: **<https://t4eq.org/preview/v2-july-2026/>** (not linked anywhere; the
+  bare `/preview/` path returns 404 by design).
+- Hosted from a separate public repository, **`T4EQ/preview`**, which has
+  GitHub Pages enabled with the `workflow` build type.
+
+### How the branches and remotes fit together
+
+You work in a single local clone with two remotes and two branches:
+
+| Remote    | Repository              | Purpose                                    |
+| --------- | ----------------------- | ------------------------------------------ |
+| `origin`  | `T4EQ/T4EQ.github.io`   | The main site (production, t4eq.org).      |
+| `preview` | `T4EQ/preview`          | The staging site (`/preview/v2-july-2026/`). |
+
+- **`redesign`** is the source of truth for the v2 site. **All real edits**
+  (content, data, styles, templates) happen here.
+- **`deploy/preview`** is `redesign` plus a few preview-only CI commits (build
+  into a subfolder, set the subpath baseURL, enable `canonifyURLs`). Its only
+  job is to publish the staging site — you don't edit code directly on it.
+
+```
+redesign  ──►  real code, source of truth  (push to origin)
+   │  merge into
+   ▼
+deploy/preview  ──►  redesign + CI tweaks  (push to preview → t4eq.org/preview/)
 ```
 
-See [direnv](https://direnv.net/) to automatically execute `nix develop` when you change your working directory
-to a subdirectory inside this repository.
+### Updating the preview after you make changes
 
-## Making content changes
+All real editing happens on **`redesign`**; `deploy/preview` is only used to
+publish. From the repo root:
 
-### Adding a new page
+1. **Edit on `redesign`:**
 
-- Create a new file inside the `content` directory with the name of the page. You can do this with 
-hugo using `hugo new content content/${MY_NEW_FILE}.md`, which has the benefits of automatically applying 
-the default archetype.
-- Edit the content of the new file using markdown.
+   ```sh
+   git switch redesign
+   ```
 
-### Submitting and deploying website changes
+   Make your changes (content in `content/`, data in `data/`, styles in
+   `static/css/main.css`, templates in `layouts/`).
 
-Ideally, the content of the website should be reviewed by another team member before it is deployed to 
-[t4eq.github.io](https://t4eq.github.io). This is enforced using [GitHub Pull Requests](https://docs.github.com/es/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests):
-- Create a branch in the repository.
-- Make your changes locally, making sure to build them and check them out following the steps in [Build with Hugo](#build-with-hugo).
-- Once you are satisfied with the changes, create a new git commit.
-- Push the branch to github and open a pull request targetting the `main` branch. 
-- Assign a teammate as a reviewer of the changes, and make sure that the automated CI build passed.
-- If any changes are requested, or if the CI build did not pass, amend the changes locally, and push them to GitHub.
-- Once approved, merge the pull request.
-- When the changes are merged in the `main` branch, they are automatically deployed to [Build with Hugo](#build-with-hugo).
+2. **Check them locally first** — the local server rebuilds automatically:
 
-### What about other kind of changes to the website? 
+   ```sh
+   hugo server --disableFastRender --noHTTPCache
+   ```
 
-Have a look at `Hugo`'s [documentation](https://gohugo.io/documentation/). It is pretty extensive, 
-you can pretty much change anything you like. Or ask Javier, he might even be able to help (hopefully).
+   Open <http://localhost:1313> and confirm the change looks right.
+
+3. **Commit and back up `redesign`:**
+
+   ```sh
+   git add -A
+   git commit -m "Describe what you changed"
+   git push origin redesign
+   ```
+
+4. **Fold the changes into `deploy/preview` and publish** — merging keeps the
+   push to the preview remote a simple fast-forward (no force-push needed):
+
+   ```sh
+   git switch deploy/preview
+   git merge redesign
+   git push preview deploy/preview:main
+   ```
+
+5. **Wait for the build to finish** (about a minute), then reload
+   <https://t4eq.org/preview/v2-july-2026/>. To watch the deploy from the
+   terminal:
+
+   ```sh
+   gh run watch --repo T4EQ/preview --exit-status
+   ```
+
+6. **Switch back to `redesign`** for your next round of edits:
+
+   ```sh
+   git switch redesign
+   ```
+
+> **Tip:** if the page looks stale, it's usually browser/CDN caching — do a
+> hard refresh (Cmd+Shift+R) or add `?v=2` to the URL.
+
+### Important: keep preview changes out of production
+
+The preview workflow differs from production in three ways:
+
+- it builds into a `v2-july-2026/` subfolder,
+- it sets `--baseURL` to the `/preview/v2-july-2026/` subpath, and
+- it enables `HUGO_CANONIFYURLS: true` so that root-absolute asset and link
+  paths (`/css/...`, `/images/...`, `/partners/`) resolve correctly under the
+  subpath.
+
+These preview-only settings live on the `deploy/preview` branch and must not be
+merged into `main`.

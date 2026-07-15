@@ -1,0 +1,43 @@
+{{ define "main" }}
+
+{{ partial "components/hero.html" (dict
+  "page" .
+  "image" .Params.hero_image
+  "title" (.Params.hero_title | default .Title)
+  "text" (.Params.hero_text | default .Site.Params.tagline)
+) }}
+
+{{ partial "components/card-grid.html" (dict
+  "background" "c-band--purple"
+  "title" (.Params.values_title | default "Our Values")
+  "intro" .Params.values_intro
+  "columns" 2
+  "icons" true
+  "cards" .Params.values
+) }}
+
+{{ partial "components/mission-vision.html" (dict
+  "background" "c-band--green"
+  "title" (.Params.mission_vision_title | default "Our Mission and Vision")
+  "intro" .Params.mission_vision_intro
+  "cards" .Params.mission_vision
+  "showDiagram" true
+) }}
+
+{{ partial "components/process.html" (dict
+  "background" "c-band--purple"
+  "title" (.Params.process_title | default "How do we work?")
+  "intro" .Params.process_intro
+  "phases" .Params.process
+) }}
+
+{{ partial "components/cta.html" (dict
+  "title" "Discover Our Team"
+  "ariaLabel" "Discover our team"
+  "image" .Params.team_cta_image
+  "cardColor" "purple"
+  "text" .Params.team_cta_text
+  "button" (dict "url" "/team/" "label" "Meet the team")
+) }}
+
+{{ end }}
