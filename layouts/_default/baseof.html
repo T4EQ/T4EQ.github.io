@@ -6,6 +6,9 @@
   <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} — {{ .Site.Title }}{{ end }}</title>
   <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
 
+  {{/* Canonical URL — always t4eq.org, independent of build baseURL/serving domain */}}
+  <link rel="canonical" href="{{ printf "https://t4eq.org%s" .RelPermalink }}">
+
   {{/* Open Graph */}}
   <meta property="og:title" content="{{ .Title }}">
   <meta property="og:type" content="website">
