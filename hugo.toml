@@ -1,7 +1,6 @@
 baseURL = "https://t4eq.org/"
 locale = "en-US"
 title = "T4EQ — Tech for Equality"
-theme = "t4eq"
 
 [params]
   description = "We envision a world where technology bridges inequality and gives every individual the tools to live with dignity and opportunity."

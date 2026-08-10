@@ -1,7 +1,8 @@
 # T4EQ — Tech for Equality
 
 Source for the [Tech for Equality](https://t4eq.org) website — a static site
-built with [Hugo](https://gohugo.io/) (extended) using a custom in-house theme.
+built with [Hugo](https://gohugo.io/) (extended), with all templates and
+styles hand-built in this repository (no external theme).
 
 ## Requirements
 
@@ -35,15 +36,11 @@ static/          -> Assets served as-is:
   js/main.js     ->   Site JavaScript (nav, contact form).
   images/        ->   Logos, team photos, mockups.
 layouts/         -> The ACTIVE templates that render the site:
-  _default/      ->   Per-page templates (team, work, contact, ...).
+  _default/      ->   Per-page templates (about, team, contact, ...), plus
+                      list.html/taxonomy.html as generic fallbacks for any
+                      section or tag/category page without a dedicated one.
   partials/      ->   Reusable partials + components/.
-themes/t4eq/     -> Legacy theme copy — NOT used for rendering (root
-                    layouts/ and static/ take precedence).
 ```
-
-> When editing templates, styles, or scripts, edit the files under the
-> repository root (`layouts/`, `static/css/main.css`, `static/js/main.js`).
-> The copies inside `themes/t4eq/` are not used.
 
 ## Editing content
 
