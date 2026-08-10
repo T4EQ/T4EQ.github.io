@@ -1,4 +1,4 @@
-{{- /* Mission/Vision band: paired cards + optional triangle diagram.
+{{- /* Mission/Vision band: paired cards.
        Params: background, title, level, intro,
                cards (slice of {title,text}) */ -}}
 <section class="c-band {{ .background | default "c-band--purple" }}{{ with .class }} {{ . }}{{ end }}"{{ with .id }} id="{{ . }}"{{ end }}>

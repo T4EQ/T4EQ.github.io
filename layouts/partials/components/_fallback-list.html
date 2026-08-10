@@ -1,0 +1,12 @@
+{{- /* Minimal on-brand fallback for any section/taxonomy/term page that has
+       no dedicated template. Lists child pages (or terms) as plain links. */ -}}
+{{ partial "components/page-header.html" (dict "title" .Title) }}
+
+<section class="c-band c-band--purple">
+  <div class="container">
+    {{ with .Content }}<div class="c-prose">{{ . }}</div>{{ end }}
+    {{ range .Pages }}
+    <p class="c-prose"><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></p>
+    {{ end }}
+  </div>
+</section>
