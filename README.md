@@ -64,106 +64,41 @@ Deployment is automated by
 3. On push to `main`, the workflow builds the site with `hugo --minify` and
    deploys it to GitHub Pages via `actions/deploy-pages`.
 
-The workflow also builds (but does **not** deploy) on the `redesign` branch, so
-you can confirm the build passes before merging.
+## Branch previews
 
-## Preview / staging site
-
-A hidden staging build (the "v2" redesign) is published under a subpath so work
-can be reviewed before going live:
-
-- URL: **<https://t4eq.org/preview/v2-july-2026/>** (not linked anywhere; the
-  bare `/preview/` path returns 404 by design).
-- Hosted from a separate public repository, **`T4EQ/preview`**, which has
-  GitHub Pages enabled with the `workflow` build type.
-
-### How the branches and remotes fit together
-
-You work in a single local clone with two remotes and two branches:
-
-| Remote    | Repository              | Purpose                                    |
-| --------- | ----------------------- | ------------------------------------------ |
-| `origin`  | `T4EQ/T4EQ.github.io`   | The main site (production, t4eq.org).      |
-| `preview` | `T4EQ/preview`          | The staging site (`/preview/v2-july-2026/`). |
-
-- **`redesign`** is the source of truth for the v2 site. **All real edits**
-  (content, data, styles, templates) happen here.
-- **`deploy/preview`** is `redesign` plus a few preview-only CI commits (build
-  into a subfolder, set the subpath baseURL, enable `canonifyURLs`). Its only
-  job is to publish the staging site — you don't edit code directly on it.
+Every branch pushed to this repo (other than `main`) is automatically built
+and published at:
 
 ```
-redesign  ──►  real code, source of truth  (push to origin)
-   │  merge into
-   ▼
-deploy/preview  ──►  redesign + CI tweaks  (push to preview → t4eq.org/preview/)
+https://t4eq.org/preview/<branch-name>/
 ```
 
-### Updating the preview after you make changes
+This is handled entirely by
+[.github/workflows/hugo.yml](.github/workflows/hugo.yml):
 
-All real editing happens on **`redesign`**; `deploy/preview` is only used to
-publish. From the repo root:
+- On every push to a non-`main` branch, the workflow builds the site with
+  drafts enabled (`hugo -D`) and a `--baseURL` scoped to that branch's
+  subpath, then publishes the result to the `<branch-name>/` directory of the
+  separate **`T4EQ/preview`** repository (overwriting whatever 
+  was there before).
+- When a branch is deleted, the workflow removes its `<branch-name>/`
+  directory from `T4EQ/preview`.
 
-1. **Edit on `redesign`:**
+`T4EQ/preview` holds nothing but the built HTML/CSS/JS output 
+for each active branch — it has no source files, no build logic, and no workflow 
+of its own. GitHub Pages serves it directly (branch-based / legacy Pages source), 
+so previews persist for as many branches as are currently open, with no manual
+steps and no separate branch to maintain in this repo.
 
-   ```sh
-   git switch redesign
-   ```
+There's nothing to do locally to get a preview — just push your branch. To
+test the exact preview build yourself before pushing:
 
-   Make your changes (content in `content/`, data in `data/`, styles in
-   `static/css/main.css`, templates in `layouts/`).
+```sh
+HUGO_CANONIFYURLS=true nix develop --command hugo --minify -D \
+  --baseURL "https://t4eq.org/preview/$(git branch --show-current)/" \
+  --destination /tmp/preview-build
+```
 
-2. **Check them locally first** — the local server rebuilds automatically:
-
-   ```sh
-   hugo server --disableFastRender --noHTTPCache
-   ```
-
-   Open <http://localhost:1313> and confirm the change looks right.
-
-3. **Commit and back up `redesign`:**
-
-   ```sh
-   git add -A
-   git commit -m "Describe what you changed"
-   git push origin redesign
-   ```
-
-4. **Fold the changes into `deploy/preview` and publish** — merging keeps the
-   push to the preview remote a simple fast-forward (no force-push needed):
-
-   ```sh
-   git switch deploy/preview
-   git merge redesign
-   git push preview deploy/preview:main
-   ```
-
-5. **Wait for the build to finish** (about a minute), then reload
-   <https://t4eq.org/preview/v2-july-2026/>. To watch the deploy from the
-   terminal:
-
-   ```sh
-   gh run watch --repo T4EQ/preview --exit-status
-   ```
-
-6. **Switch back to `redesign`** for your next round of edits:
-
-   ```sh
-   git switch redesign
-   ```
-
-> **Tip:** if the page looks stale, it's usually browser/CDN caching — do a
-> hard refresh (Cmd+Shift+R) or add `?v=2` to the URL.
-
-### Important: keep preview changes out of production
-
-The preview workflow differs from production in three ways:
-
-- it builds into a `v2-july-2026/` subfolder,
-- it sets `--baseURL` to the `/preview/v2-july-2026/` subpath, and
-- it enables `HUGO_CANONIFYURLS: true` so that root-absolute asset and link
-  paths (`/css/...`, `/images/...`, `/partners/`) resolve correctly under the
-  subpath.
-
-These preview-only settings live on the `deploy/preview` branch and must not be
-merged into `main`.
+Publishing to `T4EQ/preview` requires the `PREVIEW_DEPLOY_KEY` 
+repository secret (an SSH deploy key with write access to 
+`T4EQ/preview`) to be configured on this repo.
