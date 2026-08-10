@@ -96,6 +96,7 @@ test the exact preview build yourself before pushing:
 ```sh
 HUGO_CANONIFYURLS=true nix develop --command hugo --minify -D \
   --baseURL "https://t4eq.org/preview/$(git branch --show-current)/" \
+  --environment preview \
   --destination /tmp/preview-build
 ```
 

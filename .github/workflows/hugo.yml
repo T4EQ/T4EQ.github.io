@@ -86,6 +86,7 @@ jobs:
         run: |
           nix develop --command hugo --minify -D \
             --baseURL "https://t4eq.org/preview/$BRANCH/" \
+            --environment preview \
             --destination "$RUNNER_TEMP/preview-build"
 
       - name: Checkout preview repository

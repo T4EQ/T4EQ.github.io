@@ -6,6 +6,10 @@
   <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} — {{ .Site.Title }}{{ end }}</title>
   <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
 
+  {{/* Branch previews are built with --environment preview (see hugo.yml); keep
+       them out of search results while still letting crawlers read this tag. */}}
+  {{ if ne hugo.Environment "production" }}<meta name="robots" content="noindex, nofollow">{{ end }}
+
   {{/* Canonical URL — always t4eq.org, independent of build baseURL/serving domain */}}
   <link rel="canonical" href="{{ printf "https://t4eq.org%s" .RelPermalink }}">
 
