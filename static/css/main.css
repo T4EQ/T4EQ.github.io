@@ -13,8 +13,8 @@
   --green:        #679869;
   --offwhite:     #F5F5F4;
 
-  --line: rgba(245, 245, 244, 0.6);        
-  --line-soft: rgba(245, 245, 244, 0.6);  
+  --line: rgba(245, 245, 244, 0.6);
+  --line-soft: rgba(245, 245, 244, 0.6);
   --line-extrasoft: rgba(245, 245, 244, 0.25);
 
   --font-mono: 'Roboto Mono', 'Courier New', monospace;
@@ -725,16 +725,14 @@ main > .c-pageheader:first-child { padding-top: calc(var(--nav-height) + var(--s
   opacity: 1;
 }
 
-/* ── Mission / Vision (paired cards + diagram) ── */
+/* ── Mission / Vision (paired cards) ── */
 .c-mv {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   gap: var(--space-lg);
   align-items: center;
 }
-.c-mv__cards { display: grid; grid-auto-rows: 1fr; gap: var(--space-md); }
-.c-mv--no-diagram { grid-template-columns: 1fr; }
-.c-mv--no-diagram .c-mv__cards { grid-template-columns: 1fr 1fr; grid-auto-rows: auto; }
+.c-mv__cards { display: grid; grid-auto-rows: auto; gap: var(--space-md); grid-template-columns: 1fr 1fr; }
 .c-mv__card {
   border: 1px solid var(--line-soft);
   border-radius: var(--radius-md);
@@ -755,8 +753,6 @@ main > .c-pageheader:first-child { padding-top: calc(var(--nav-height) + var(--s
   line-height: 1.5;
   opacity: 1;
 }
-.c-mv__diagram { display: flex; align-items: center; justify-content: center; }
-.c-mv__diagram svg { width: 100%; height: auto; }
 
 /* ── Project highlight (band over a background image) ── */
 .c-highlight { max-width: 640px; }
@@ -915,7 +911,7 @@ main > .c-pageheader:first-child { padding-top: calc(var(--nav-height) + var(--s
   .c-project__head { grid-template-columns: 1fr; }
   .c-project__detail { grid-template-columns: 1fr; }
   .c-mv            { grid-template-columns: 1fr; }
-  .c-mv--no-diagram .c-mv__cards { grid-template-columns: 1fr; }
+  .c-mv__cards { grid-template-columns: 1fr; }
   .c-process__steps { flex-direction: column; }
   .c-process__step { flex-basis: auto; padding: var(--space-md) var(--space-md); }
   .c-process__arrow { align-self: center; transform: rotate(90deg); }
