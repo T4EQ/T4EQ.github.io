@@ -1,0 +1,21 @@
+{{ define "main" }}
+
+{{ partial "components/hero.html" (dict
+  "page" .
+  "image" .Params.hero_image
+  "title" .Title
+  "text" .Params.deck
+) }}
+
+<section class="c-band c-band--purple c-band--posts">
+  <div class="container">
+    <p class="c-post__meta">
+      {{ if not .Date.IsZero }}<time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>{{ end }}
+      {{ with .Params.author }} · {{ . }}{{ end }}
+    </p>
+    <div class="c-article">{{ .Content }}</div>
+    <p class="c-post__back">{{ partial "components/button.html" (dict "url" "/blog/" "label" "Back to Blog") }}</p>
+  </div>
+</section>
+
+{{ end }}

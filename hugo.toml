@@ -24,17 +24,21 @@ title = "T4EQ — Tech for Equality"
     url = "/projects/"
     weight = 3
   [[menu.main]]
+    name = "Blog"
+    url = "/blog/"
+    weight = 4
+  [[menu.main]]
     name = "Team"
     url = "/team/"
-    weight = 4
+    weight = 5
   [[menu.main]]
     name = "Partners"
     url = "/partners/"
-    weight = 5
+    weight = 6
   [[menu.main]]
     name = "Contact"
     url = "/contact/"
-    weight = 6
+    weight = 7
 
   [[menu.footer]]
     name = "Tech for Equality"
