@@ -39,6 +39,7 @@ layouts/         -> The ACTIVE templates that render the site:
   _default/      ->   Per-page templates (about, team, contact, ...), plus
                       list.html/taxonomy.html as generic fallbacks for any
                       section or tag/category page without a dedicated one.
+  blog/          ->   Blog list + single post templates.
   partials/      ->   Reusable partials + components/.
 ```
 
@@ -46,6 +47,14 @@ layouts/         -> The ACTIVE templates that render the site:
 
 - **Pages** live in `content/` as Markdown with YAML/TOML front matter.
   Create a new page with `hugo new content content/<name>.md`.
+- **Blog posts** live in `content/blog/` as Markdown. Create one with
+  `hugo new content blog/<slug>.md` — this scaffolds the front matter
+  (`title`, `date`, `summary`, `deck`, `hero_image`, `author`) from
+  [archetypes/blog.md](archetypes/blog.md). Set `draft: false` to publish.
+  The post body is regular Markdown. The listing at `/blog/` is generated
+  automatically (newest first, paginated) by
+  [layouts/blog/list.html](layouts/blog/list.html) and
+  [layouts/blog/single.html](layouts/blog/single.html).
 - **Team members** are defined in [data/team.yaml](data/team.yaml).
 - **Services** are defined in [data/services.yaml](data/services.yaml).
 - **Navigation and footer menus** are configured in the `[menu]` section of

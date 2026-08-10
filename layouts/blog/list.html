@@ -1,0 +1,18 @@
+{{ define "main" }}
+
+{{ partial "components/hero.html" (dict
+  "page" .
+  "image" .Params.hero_image
+  "title" (.Params.hero_title | default .Title)
+  "text" .Params.hero_text
+) }}
+
+{{ $paginator := .Paginate (.Pages.ByDate.Reverse) }}
+
+{{ partial "components/post-list.html" (dict
+  "background" "c-band--purple"
+  "posts" $paginator.Pages
+  "paginator" $paginator
+) }}
+
+{{ end }}
