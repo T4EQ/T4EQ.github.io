@@ -2,8 +2,9 @@ name: Build and deploy Hugo site to GitHub Pages
 
 on:
   push:
-    branches: ["main"]
+    branches: ["**"]
   pull_request:
+  delete:
   workflow_dispatch:
 
 permissions:
@@ -11,12 +12,9 @@ permissions:
   pages: write
   id-token: write
 
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
-
 jobs:
   build:
+    if: github.event_name != 'delete'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -36,8 +34,15 @@ jobs:
           path: ./result
 
   deploy:
-    # Only deploy from main
-    if: github.ref == 'refs/heads/main'
+    # Only deploy from main. github.ref resolves to the default branch (not
+    # the deleted ref) on a `delete` event, so that event must be excluded
+    # explicitly rather than relying on `needs: build` — a custom `if:` here
+    # replaces the implicit "needed job succeeded" check, so `build` being
+    # skipped on `delete` would not otherwise stop this job from running.
+    if: github.event_name != 'delete' && github.ref == 'refs/heads/main'
+    concurrency:
+      group: "pages"
+      cancel-in-progress: false
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -47,3 +52,108 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
+
+  preview:
+    # Publish a preview build for every branch except main, under
+    # https://t4eq.org/preview/<branch>/ in the T4EQ/preview repository.
+    if: github.event_name == 'push' && github.ref != 'refs/heads/main'
+    runs-on: ubuntu-latest
+    concurrency:
+      group: "preview-repo"
+      cancel-in-progress: false
+    env:
+      BRANCH: ${{ github.ref_name }}
+    steps:
+      - name: Validate branch name
+        run: |
+          case "$BRANCH" in
+            *..*|/*|*/) echo "Unsafe branch name: $BRANCH" >&2; exit 1 ;;
+          esac
+          printf '%s' "$BRANCH" | grep -Eq '^[A-Za-z0-9._/-]+$' || {
+            echo "Unsafe branch name: $BRANCH" >&2
+            exit 1
+          }
+
+      - name: Checkout site source
+        uses: actions/checkout@v7
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@v31
+
+      - name: Build preview site
+        env:
+          HUGO_CANONIFYURLS: "true"
+        run: |
+          nix develop --command hugo --minify -D \
+            --baseURL "https://t4eq.org/preview/$BRANCH/" \
+            --destination "$RUNNER_TEMP/preview-build"
+
+      - name: Checkout preview repository
+        uses: actions/checkout@v7
+        with:
+          repository: T4EQ/preview
+          ssh-key: ${{ secrets.PREVIEW_DEPLOY_KEY }}
+          path: preview-repo
+
+      - name: Publish branch preview
+        run: |
+          rm -rf "preview-repo/$BRANCH"
+          mkdir -p "preview-repo/$BRANCH"
+          cp -r "$RUNNER_TEMP/preview-build/." "preview-repo/$BRANCH/"
+          touch preview-repo/.nojekyll
+
+          cd preview-repo
+          git config user.name "t4eq-preview-bot"
+          git config user.email "bot@t4eq.org"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes to publish"
+            exit 0
+          fi
+          git commit -m "Update preview for $BRANCH ($GITHUB_SHA)"
+          git push origin HEAD:main
+
+  preview-cleanup:
+    # Remove a branch's preview directory once the branch is deleted.
+    # main never has a preview directory (the preview job excludes it), so
+    # exclude it here too rather than firing a no-op cleanup run for it.
+    if: >-
+      github.event_name == 'delete' &&
+      github.event.ref_type == 'branch' &&
+      github.event.ref != 'main'
+    runs-on: ubuntu-latest
+    concurrency:
+      group: "preview-repo"
+      cancel-in-progress: false
+    env:
+      BRANCH: ${{ github.event.ref }}
+    steps:
+      - name: Validate branch name
+        run: |
+          case "$BRANCH" in
+            *..*|/*|*/) echo "Unsafe branch name: $BRANCH" >&2; exit 1 ;;
+          esac
+          printf '%s' "$BRANCH" | grep -Eq '^[A-Za-z0-9._/-]+$' || {
+            echo "Unsafe branch name: $BRANCH" >&2
+            exit 1
+          }
+
+      - name: Checkout preview repository
+        uses: actions/checkout@v7
+        with:
+          repository: T4EQ/preview
+          ssh-key: ${{ secrets.PREVIEW_DEPLOY_KEY }}
+          path: preview-repo
+
+      - name: Remove branch preview
+        run: |
+          cd preview-repo
+          git config user.name "t4eq-preview-bot"
+          git config user.email "bot@t4eq.org"
+          git rm -r --ignore-unmatch -- "$BRANCH"
+          if git diff --cached --quiet; then
+            echo "Nothing to remove"
+            exit 0
+          fi
+          git commit -m "Remove preview for $BRANCH"
+          git push origin HEAD:main
