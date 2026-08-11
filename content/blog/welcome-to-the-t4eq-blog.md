@@ -24,7 +24,7 @@ We expect to cover a wide range of topics, including:
 - **Project updates**. As we move forward, we will keep you posted on our milestones, roadblocks, 
   and changes in direction. These updates keep us accountable and give everyone visibility into our 
   work and key learnings. 
-- **Engineering write-ups**. We favor simple, maintainable and sustainable solutions. You can expect 
+- **Engineering write-ups**. We favor simple, maintainable, and sustainable solutions. You can expect 
   deep dives into bugs, design discussions, and technical trade-offs.
 - **Field notes**. What we've learned from working alongside community partners like AID India, the 
   impact our solutions are having, and how that feedback shapes our work and direction.
@@ -38,7 +38,7 @@ the work we do and encourage you to follow in our footsteps toward a more equal 
 joining T4EQ, funding our work, partnering with us, or finding your own way to help close the gap.
 
 We believe transparency is key to building trust and empowerment. By being open about our work (both 
-successes and failures) we give the community the tools to reuse what we've built and continue that 
+successes and failures), we give the community the tools to reuse what we've built and continue that 
 cycle of empowerment.
 
 ## Stay tuned and follow along!
