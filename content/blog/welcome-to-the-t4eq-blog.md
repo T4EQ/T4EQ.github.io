@@ -5,7 +5,7 @@ draft: false
 summary: "A new vehicle to share all of our experiences and learnings with you!"
 deck: "A new place to follow our work, in our own words."
 author: "Javier Alvarez"
-hero_image: "/images/backgrounds/about_team_cta.jpg"
+hero_image: "/images/backgrounds/project_highlight.jpg"
 ---
 
 When T4EQ started, we were just a group of people with similar interests hoping to find a way to reduce 
