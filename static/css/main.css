@@ -1026,6 +1026,28 @@ main > .c-pageheader:first-child { padding-top: calc(var(--nav-height) + var(--s
 .c-article pre code { background: none; padding: 0; }
 .c-article img { border-radius: var(--radius-sm); }
 .c-article hr { border: none; border-top: 1px solid var(--line-soft); margin: var(--space-lg) 0; }
+.c-comments {
+  max-width: 720px;
+  margin-top: var(--space-lg);
+}
+.c-comments #isso-thread {
+  --isso-primary-text-color: var(--offwhite);
+  --isso-secondary-text-color: rgba(245, 245, 244, 0.75);
+  --isso-hover-color: var(--offwhite);
+  --isso-link-hover-color: var(--offwhite);
+  --isso-link-text-shadow-color: transparent;
+  --isso-comment-divider-color: var(--line-extrasoft);
+  --isso-page-author-suffix-color: var(--offwhite);
+  color: var(--offwhite);
+  font-family: var(--font-sans);
+  font-size: var(--fs-t3);
+}
+.c-comments .isso-thread-heading {
+  font-family: var(--font-mono);
+  font-size: var(--fs-h4);
+  letter-spacing: var(--ls-snug);
+  margin-bottom: var(--space-md);
+}
 .c-post__back {
   max-width: 720px;
   margin-top: var(--space-lg);

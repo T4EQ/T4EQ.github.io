@@ -9,6 +9,7 @@ title = "T4EQ — Tech for Equality"
   linkedin = "https://www.linkedin.com/company/t4eq"
   github = "https://github.com/t4eq"
   instagram = "https://www.instagram.com/t4eq_org"
+  issoURL = "https://isso.t4eq.org"
 
 [menu]
   [[menu.main]]
