@@ -14,10 +14,10 @@
       {{ with .Params.author }} · {{ . }}{{ end }}
     </p>
     <div class="c-article">{{ .Content }}</div>
-    {{ with .Site.Params.issoURL }}
     <div class="c-comments">
       <section id="isso-thread" data-title="Comments" data-isso-id="{{ (urls.Parse $.Permalink).Path }}"></section>
     </div>
+    {{ with .Site.Params.issoURL }}
     <script data-isso="{{ . }}" src="{{ . }}/js/embed.min.js" defer></script>
     {{ end }}
     <p class="c-post__back">{{ partial "components/button.html" (dict "url" "/blog/" "label" "Back to Blog") }}</p>
