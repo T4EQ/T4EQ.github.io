@@ -15,7 +15,11 @@
     </p>
     <div class="c-article">{{ .Content }}</div>
     <div class="c-comments">
-      <section id="isso-thread" data-title="Comments" data-isso-id="{{ (urls.Parse $.Permalink).Path }}"></section>
+      <section
+            id="isso-thread"
+            data-title="{{ if ne hugo.Environment "production" }}[preview] {{ end }}{{ $.Title }}"
+            data-isso-id="{{ (urls.Parse $.Permalink).Path }}">
+      </section>
     </div>
     {{ with .Site.Params.issoURL }}
     <script data-isso="{{ . }}" src="{{ . }}/js/embed.min.js" defer></script>
