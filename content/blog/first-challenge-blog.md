@@ -2,7 +2,7 @@
 title: "Our first challenge"
 date: 2026-08-11
 draft: false
-summary: "Starting from a clean slate and zero connection to our first project!"
+summary: "Starting from a clean slate and zero connection to our first project."
 deck: "Starting from a clean slate and zero connection to our first project."
 hero_image: "/images/backgrounds/about_hero_v8.jpg"
 author: "Preethi Padmanabhan"
