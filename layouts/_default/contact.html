@@ -17,15 +17,14 @@
   "linkedin" site.Params.linkedin
   "instagram" site.Params.instagram
   "github" site.Params.github
+  "org_details" (printf
+    "%s\n\n[%s](mailto:%s)\n\n**IBAN:** %s\n\n**UID:** %s"
+    .Params.organization_name
+    .Params.contact_email
+    .Params.contact_email
+    .Params.iban
+    .Params.charity_id
+  )
 ) }}
-
-{{ if and .Params.organization_name .Params.charity_id .Params.iban .Params.contact_email }}
-{{ partial "components/prose.html" (dict
-  "background" "c-band--purple"
-  "title" "Organization Details"
-  "intro" .Params.organization_name
-  "body" (printf "[%s](mailto:%s)\n\n**IBAN:** %s  \n**UID:** %s" .Params.contact_email .Params.contact_email .Params.iban .Params.charity_id)
-) }}
-{{ end }}
 
 {{ end }}
