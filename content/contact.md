@@ -4,6 +4,9 @@ layout: "contact"
 intro: "Have a question, a tech challenge to solve, or a partnership idea? Drop us a message with how you’d like to get involved. We’d love to hear from you."
 
 connect_text: "Follow our work and join the conversation on social media."
+organization_name: "Tech for Equality"
+charity_id: "CHE-411.338.712"
+iban: "CH97 0070 0114 9058 0432 3"
 
 # Where contact messages are sent.
 # To send messages straight to your inbox with no page reload, create a free
