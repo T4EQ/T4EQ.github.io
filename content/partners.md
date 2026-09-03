@@ -29,6 +29,26 @@ partners:
     hideName: true
     text: "Our community partner in Tamil Nadu, India, operating Eureka Village Centers that provide accessible education in 647 villages. We are currently partnering with them to build solutions for rural villages within their network."
 
+sponsors_title: "Our In-kind Sponsors"
+sponsors_intro: "These organisations currently support T4EQ in kind by providing essential services free of charge. We are grateful for the tools that help our team collaborate, build and communicate our work."
+sponsors:
+  - name: "Google"
+    image: "/images/partners/google.svg"
+    text: "Provides Google Workspace for Nonprofits at no cost, including professional email and collaboration tools."
+    link: "https://www.google.com/nonprofits/offerings/workspace/"
+  - name: "GitHub"
+    image: "/images/partners/github.svg"
+    text: "Provides a GitHub Team plan at no cost through GitHub for Nonprofits, supporting our open-source development and collaboration."
+    link: "https://github.com/solutions/industry/nonprofits"
+  - name: "Zulip"
+    image: "/images/partners/zulip-icon-circle.svg"
+    text: "Provides unlimited mobile push notifications at no cost for our self-hosted community."
+    link: "https://zulip.com/"
+  - name: "Canva"
+    image: "/images/partners/canva.svg"
+    text: "Provides Canva Pro’s premium design and collaboration features at no cost through Canva Nonprofits."
+    link: "https://www.canva.com/canva-for-nonprofits/"
+
 highlight:
   name: "LEAP"
   date: "2025"

@@ -591,6 +591,25 @@ main > .c-pageheader:first-child { padding-top: calc(var(--nav-height) + var(--s
 }
 .c-person__name-link:hover { text-decoration: underline; text-underline-offset: 3px; opacity: 0.8; }
 
+/* ── In-kind sponsors ── */
+.c-sponsor__name { margin: 0; }
+.c-sponsor__name a {
+  color: inherit;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  text-decoration: none;
+}
+.c-sponsor__name a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.c-sponsor__logo { width: 2.25rem; height: 2.25rem; }
+.c-sponsor__kind {
+  font-family: var(--font-mono);
+  font-size: var(--fs-t3);
+  font-weight: var(--fw-h4);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
 /* ── Project list + card ── */
 .c-band--projects .c-band__bar { margin-bottom: var(--space-md); }
 .c-project {
