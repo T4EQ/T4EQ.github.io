@@ -27,4 +27,27 @@
   "people" .Params.partners
 ) }}
 
+<section class="c-band c-band--purple c-band--sponsors">
+  {{ partial "components/_band-header.html" (dict
+    "title" (.Params.sponsors_title | default "Our In-kind Sponsors")
+  ) }}
+  <div class="container">
+    {{ with .Params.sponsors_intro }}<p class="c-band__intro c-band__intro--wide c-band__intro--lead">{{ . }}</p>{{ end }}
+    <div class="c-card-grid c-card-grid--2">
+      {{ range .Params.sponsors }}
+      <article class="c-card c-sponsor">
+        <h3 class="c-card__title c-sponsor__name">
+          <a href="{{ .link }}" target="_blank" rel="noopener">
+            {{ with .image }}<img class="c-sponsor__logo" src="{{ . }}" alt="" aria-hidden="true">{{ end }}
+            {{ .name }}
+          </a>
+        </h3>
+        <p class="c-sponsor__kind">In-kind sponsor</p>
+        <p class="c-card__text">{{ .text }}</p>
+      </article>
+      {{ end }}
+    </div>
+  </div>
+</section>
+
 {{ end }}
