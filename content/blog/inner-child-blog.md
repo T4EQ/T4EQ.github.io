@@ -30,7 +30,7 @@ Kids and play somehow go hand in hand, we realized that so many times on that fi
 Talking about that, just yesterday, I went on a hike and came across a cave with ancient rock engravings. To see inside, you had to manually turn an axle by hand to power up a small light. Spinning that and watching the cave illuminate filled me with pure, silly excitement. Look at this video below! 
 <video style="max-width: 300px; width: 100%; display: block; margin: 20px auto; border-radius: 8px;" controls preload="metadata">
   <source src="/videos/inner-child-hike.mp4" type="video/mp4">
-This video cannot be played on your Web browser is a better user-centric message.
+This video cannot be played on your Web browser.
 </video>
 *When was the last time a small moment of play or wonder completely caught you off guard?*
 *We'd love to hear from you in the comments below!*
