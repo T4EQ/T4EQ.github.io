@@ -58,7 +58,7 @@
           pname = "t4eq";
           version = "1.0.0";
           src = self;
-          extraBuildArgs = "--minify";
+          extraBuildArgs = "--minify -F";
         };
         default = t4eq;
       });

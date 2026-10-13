@@ -1,6 +1,6 @@
 ---
 title: "Designing for low-bandwidth education"
-date: 2026-10-11
+date: 2026-10-14
 draft: false
 summary: "A journey in bridging the education gap through technology."
 deck: "A journey in bridging the education gap through technology"
