@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   initNav();
   initContactForm();
+  initImageZoom();
 });
 
 function initNav() {
@@ -97,5 +98,65 @@ function initContactForm() {
         button.textContent = originalLabel;
       }
     }
+  });
+}
+
+function initImageZoom() {
+  const images = document.querySelectorAll('.c-article img');
+
+  if (!images.length || typeof HTMLDialogElement === 'undefined') {
+    return;
+  }
+
+  const dialog = document.createElement('dialog');
+  const zoomed = document.createElement('img');
+  dialog.className = 'c-lightbox';
+  dialog.setAttribute('aria-label', 'Enlarged image');
+  dialog.appendChild(zoomed);
+  document.body.appendChild(dialog);
+
+  // Click or tap anywhere closes; Esc is handled natively by <dialog>.
+  dialog.addEventListener('click', () => dialog.close());
+
+  // Small screens already show images at full width, so zoom is desktop-only
+  // (901px matches the mobile nav breakpoint in main.css).
+  const wide = window.matchMedia('(min-width: 901px)');
+
+  const open = (image) => {
+    if (!wide.matches) {
+      return;
+    }
+    zoomed.src = image.currentSrc || image.src;
+    zoomed.alt = image.alt;
+    dialog.showModal();
+  };
+
+  // Linked images keep their link behaviour.
+  const zoomable = Array.from(images).filter((image) => !image.closest('a'));
+
+  const sync = () => {
+    zoomable.forEach((image) => {
+      image.classList.toggle('is-zoomable', wide.matches);
+      if (wide.matches) {
+        image.tabIndex = 0
+        image.setAttribute('role', 'button');
+      } else {
+        image.removeAttribute('role');
+        image.removeAttribute('tabindex');
+      }
+    });
+  };
+
+  wide.addEventListener('change', sync);
+  sync();
+
+  zoomable.forEach((image) => {
+    image.addEventListener('click', () => open(image));
+    image.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        open(image);
+      }
+    });
   });
 }
