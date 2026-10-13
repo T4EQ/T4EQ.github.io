@@ -84,7 +84,7 @@ jobs:
         env:
           HUGO_CANONIFYURLS: "true"
         run: |
-          nix develop --command hugo --minify -D \
+          nix develop --command hugo --minify -D -F \
             --baseURL "https://t4eq.org/preview/$BRANCH/" \
             --environment preview \
             --destination "$RUNNER_TEMP/preview-build"
