@@ -34,13 +34,13 @@ projects:
     details: |
       Within this partnership, T4EQ is developing an open-source Local eDNA Navigation System (LENS) that prioritizes local data access and ownership. It utlizes pre-processed, region-specific datasets served directly from WildInSync’s ETH server, with affordable local hardware setups designed for remote areas with limited infrastructure.
 
-      LENS features an interactive visualization platform combining yearly GIS layers with eDNA sampling points across river, coastal, and mountain catchments. By providing indicators of ecosystem health, eDNA supports informed conservation decisions. Users can filter data by taxa or species, explore map layers, generate summary graphs and export data, while an integrated dashboard visualizes climate and water risks to support environmental monitoring and sustainable management.  
+      LENS features an interactive visualization platform combining yearly GIS layers with eDNA sampling points across river, coastal, and mountain catchments. By providing indicators of ecosystem health, eDNA supports making informed conservation decisions. Users can filter data by taxa or species, explore map layers, generate summary graphs and export data, while an integrated dashboard visualizes climate and water risks to support environmental monitoring and sustainable management.  
     link:
       url: "https://github.com/T4EQ"
       label: "View on GitHub"
     article:
       url: "https://wildinsync.org/"
-      label: "Visit WildinSync initiative."
+      label: "Visit WildinSync initiative"
     image: "/images/projects_wildinsync.png"
 
   - name: "Solar Lighting for Rural Classrooms"
