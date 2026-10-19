@@ -27,7 +27,13 @@ partners:
     image: "/images/partners/aidindia.png"
     link: "https://aidindia.in/"
     hideName: true
-    text: "Our community partner in Tamil Nadu, India, operating Eureka Village Centers that provide accessible education in 647 villages. We are currently partnering with them to build solutions for rural villages within their network."
+    text: "Our community partner in Tamil Nadu, India, focused on the upliftment of rural communities across 647 villages."
+  - name: "WildinSync"
+    image: "/images/partners/wildinsync.svg"
+    link: "https://wildinsync.org/"
+    hideName: true
+    text: "Our project partner in Zürich, Switzerland, an initiative led by [ETH Zürich](https://ethz.ch/en.html) and [WWF USA](https://www.worldwildlife.org/) focused on eDNA biodiversity monitoring."
+
 
 sponsors_title: "Our In-kind Sponsors"
 sponsors_intro: "These organisations currently support T4EQ in kind by providing essential services free of charge. We are grateful for the tools that help our team collaborate, build and communicate our work."
