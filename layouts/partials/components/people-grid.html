@@ -1,24 +1,6 @@
 {{- /* People grid band (team + partners). Params: background, title, level,
-       intro, people (flat slice of {image,name,text})
+       intro, people (flat slice of {image,name,text}), logos (bool: render images as logos)
        OR groups (slice of {label, people}) */ -}}
-<!-- <style>
-  .c-person__text a { text-decoration: none; }
-  .c-person__text a:hover { text-decoration: underline; }
-  /* Equal height container & vertical centering strictly for partner logos */
-  .c-people-grid .c-person__photo {
-    height: 80px;            /* Gives both logo boxes the exact same fixed height */
-    display: flex;
-    align-items: center;     /* Centers both logos vertically on the exact same baseline */
-    justify-content: flex-start;
-    margin-bottom: 1.25rem;
-  }
-
-  .c-people-grid .c-person__photo img {
-    max-height: 100%;        /* Constrains tall logos so they scale down proportionally */
-    width: auto;
-    object-fit: contain;
-  }
-</style> -->
 <section class="c-band c-band--people {{ .background | default "c-band--purple" }}"{{ with .id }} id="{{ . }}"{{ end }}>
   {{ partial "components/_band-header.html" (dict "title" .title "level" .level) }}
   <div class="container">
@@ -27,7 +9,7 @@
     {{ with .groupsTitle }}<h2 class="c-people-group__label">{{ . }}</h2>{{ end }}
     {{ range $i, $g := .groups }}
     {{ if gt $i 0 }}<hr class="c-people-divider">{{ end }}
-    <div class="c-people-grid">
+    <div class="c-people-grid{{ if $.logos }} c-people-grid--logos{{ end }}">
       {{ range $g.people }}
       <article class="c-person">
         <div class="c-person__photo">
@@ -41,7 +23,7 @@
     </div>
     {{ end }}
     {{ else }}
-    <div class="c-people-grid">
+    <div class="c-people-grid{{ if $.logos }} c-people-grid--logos{{ end }}">
       {{ range .people }}
       <article class="c-person">
         <div class="c-person__photo">
