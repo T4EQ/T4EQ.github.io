@@ -1,6 +1,24 @@
 {{- /* People grid band (team + partners). Params: background, title, level,
        intro, people (flat slice of {image,name,text})
        OR groups (slice of {label, people}) */ -}}
+<style>
+  .c-person__text a { text-decoration: none; }
+  .c-person__text a:hover { text-decoration: underline; }
+  /* Equal height container & vertical centering strictly for partner logos */
+  .c-people-grid .c-person__photo {
+    height: 80px;            /* Gives both logo boxes the exact same fixed height */
+    display: flex;
+    align-items: center;     /* Centers both logos vertically on the exact same baseline */
+    justify-content: flex-start;
+    margin-bottom: 1.25rem;
+  }
+
+  .c-people-grid .c-person__photo img {
+    max-height: 100%;        /* Constrains tall logos so they scale down proportionally */
+    width: auto;
+    object-fit: contain;
+  }
+</style>
 <section class="c-band c-band--people {{ .background | default "c-band--purple" }}"{{ with .id }} id="{{ . }}"{{ end }}>
   {{ partial "components/_band-header.html" (dict "title" .title "level" .level) }}
   <div class="container">
@@ -16,7 +34,7 @@
           {{ if .image }}<img src="{{ .image }}" alt="{{ .name }}" loading="lazy">{{ end }}
         </div>
         <p class="c-person__name">{{ if .link }}<a class="c-person__name-link" href="{{ .link }}" target="_blank" rel="noopener">{{ .name }}</a>{{ else }}{{ .name }}{{ end }}</p>
-        {{ with .text }}<p class="c-person__text">{{ . }}</p>{{ end }}
+        {{ with .text }}<p class="c-person__text">{{ . | markdownify }}</p>{{ end }}
         {{ with .focus }}<p class="c-person__focus">{{ . }}</p>{{ end }}
       </article>
       {{ end }}
@@ -30,7 +48,7 @@
           {{ if .image }}{{ if .link }}<a href="{{ .link }}" target="_blank" rel="noopener" aria-label="{{ .name }}"><img src="{{ .image }}" alt="{{ .name }}" loading="lazy"></a>{{ else }}<img src="{{ .image }}" alt="{{ .name }}" loading="lazy">{{ end }}{{ end }}
         </div>
         {{ if not .hideName }}<p class="c-person__name">{{ if .link }}<a class="c-person__name-link" href="{{ .link }}" target="_blank" rel="noopener">{{ .name }}</a>{{ else }}{{ .name }}{{ end }}</p>{{ end }}
-        {{ with .text }}<p class="c-person__text">{{ . }}</p>{{ end }}
+        {{ with .text }}<p class="c-person__text">{{ . | markdownify }}</p>{{ end }}
         {{ with .focus }}<p class="c-person__focus">{{ . }}</p>{{ end }}
       </article>
       {{ end }}
