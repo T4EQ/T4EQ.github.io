@@ -1,7 +1,7 @@
 {{- /* People grid band (team + partners). Params: background, title, level,
        intro, people (flat slice of {image,name,text})
        OR groups (slice of {label, people}) */ -}}
-<style>
+<!-- <style>
   .c-person__text a { text-decoration: none; }
   .c-person__text a:hover { text-decoration: underline; }
   /* Equal height container & vertical centering strictly for partner logos */
@@ -18,7 +18,7 @@
     width: auto;
     object-fit: contain;
   }
-</style>
+</style> -->
 <section class="c-band c-band--people {{ .background | default "c-band--purple" }}"{{ with .id }} id="{{ . }}"{{ end }}>
   {{ partial "components/_band-header.html" (dict "title" .title "level" .level) }}
   <div class="container">
