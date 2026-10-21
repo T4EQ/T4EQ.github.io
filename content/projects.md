@@ -28,11 +28,11 @@ projects:
     community: "WildinSync led by ETH Zürich and WWF USA"
     year: "2026"
     description: |
-      Biodiversity tracking is vital for protecting ecosystems, monitoring climate impacts, detecting invasive species, and guiding less destructive infrastructure development. To support these decisions, we partner with WildInSync, a non-profit initiative led by ETH Zurich and WWF USA, which combines environmental DNA (eDNA), genetic traces left by living organisms in water, soil, or air, with satellite imagery to monitor biodiversity across landscapes.
+      Biodiversity tracking is vital for protecting ecosystems, monitoring climate impacts, detecting invasive species, and guiding less destructive infrastructure development. To support these decisions, we partner with WildinSync, a non-profit initiative led by ETH Zurich and WWF USA, which combines environmental DNA (eDNA), genetic traces left by living organisms in water, soil, or air, with satellite imagery to monitor biodiversity across landscapes.
 
       Despite existing global eDNA platforms, local conservation partners often lack easy access to processed insights while retaining ownership of their data. They need tools to explore regional findings without navigating raw scientific datasets or relying on centralized systems. These needs are compounded by remote locations, limited internet connectivity, and constrained hardware budgets, making large global databases difficult to access and manage.
     details: |
-      Within this partnership, T4EQ is developing an open-source Local eDNA Navigation System (LENS) that prioritizes local data access and ownership. It utlizes pre-processed, region-specific datasets served directly from WildInSync’s ETH server, with affordable local hardware setups designed for remote areas with limited infrastructure.
+      Within this partnership, T4EQ is developing an open-source Local eDNA Navigation System (LENS) that prioritizes local data access and ownership. It utlizes pre-processed, region-specific datasets served directly from WildinSync’s ETH server, with affordable local hardware setups designed for remote areas with limited infrastructure.
 
       LENS features an interactive visualization platform combining yearly GIS layers with eDNA sampling points across river, coastal, and mountain catchments. By providing indicators of ecosystem health, eDNA supports making informed conservation decisions. Users can filter data by taxa or species, explore map layers, generate summary graphs and export data, while an integrated dashboard visualizes climate and water risks to support environmental monitoring and sustainable management.  
     link:
