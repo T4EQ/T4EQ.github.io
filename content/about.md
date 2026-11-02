@@ -22,7 +22,7 @@ values:
     text: "We believe the best solutions are built with people, not just for them."
 
 mission_vision_title: "Our Mission and Vision"
-mission_vision_intro: "T4EQ is a Swiss-based technology non-profit organization of like-minded individuals committed to tackling societal challenges aligned with the UN’s sustainable development goals (SDGs)."
+mission_vision_intro: "T4EQ is a Swiss-based technology non-profit organization of like-minded individuals committed to tackling societal challenges aligned with the UN’s Sustainable Development Goals (SDGs)."
 mission_vision:
   - title: "Mission"
     text: "Our mission is to co-develop open-source solutions for and with communities whose needs remain unmet due to a lack of access to technology."
