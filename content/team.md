@@ -5,7 +5,7 @@ hero_title: "Our Team"
 hero_text: "A community of engineers, designers and development professionals committed to closing the digital divide."
 hero_image: "/images/backgrounds/team_hero.jpg"
 
-intro: "Our founding team is based in Switzerland — we take care of all things engineering, management, partnerships, and everything in between.
+intro: "Our founding team is based in Switzerland – we take care of all things engineering, management, partnerships, and everything in between.
 
 Get to know us!
 "
