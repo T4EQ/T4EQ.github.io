@@ -212,7 +212,8 @@ body {
 .footer-social { display: inline-flex; align-items: center; gap: var(--space-sm); }
 .footer-social__link { display: inline-flex; color: var(--offwhite); opacity: 0.9; transition: opacity 0.2s; }
 .footer-social__link:hover { opacity: 1; }
-.footer-social__link svg { width: clamp(24px, 3vw, 32px); height: clamp(24px, 3vw, 32px); }
+.footer-social__link svg,
+.footer-social__link img { width: clamp(24px, 3vw, 32px); height: clamp(24px, 3vw, 32px); }
 /* ════════════════════════════════════════════════
    RESPONSIVE
    ════════════════════════════════════════════════ */
@@ -919,7 +920,8 @@ main > .c-pageheader:first-child { padding-top: calc(var(--nav-height) + var(--s
 /* ── Social links ── */
 .c-social { display: flex; gap: var(--space-md); margin-top: var(--space-md); }
 .c-social__link { color: var(--offwhite); opacity: 1; transition: opacity 0.2s; }
-.c-social__link svg { width: 44px; height: 44px; }
+.c-social__link svg,
+.c-social__link img { width: 44px; height: 44px; }
 
 /* ── Blog: post grid + card ── */
 .c-post-grid {

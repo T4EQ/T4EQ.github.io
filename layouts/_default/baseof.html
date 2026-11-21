@@ -20,6 +20,9 @@
   <meta property="og:url" content="{{ .Permalink }}">
   {{ with .Site.Params.ogImage }}<meta property="og:image" content="{{ . | absURL }}">{{ end }}
 
+  {{/* Blog feed discovery */}}
+  <link rel="alternate" type="application/rss+xml" title="{{ .Site.Title }} — Blog" href="{{ "blog/index.xml" | absURL }}">
+
   {{/* Favicon */}}
   <link rel="icon" type="image/svg+xml" href="/images/logos/favicon-cropped.svg">
 
